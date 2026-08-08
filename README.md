@@ -1,4 +1,100 @@
+<div align="center">
+
 # IGI Offline Trainer
+
+### A childhood mission I could never quite finish. A curiosity that never quite left.
+
+</div>
+
+---
+
+## Remember Border Crossing?
+
+<div align="center">
+
+<!-- THE hero shot. Get to the chokepoint where the Dragunov guard sits and grab your screenshot there — that's the moment this whole project is named after. -->
+<img src="assets/images/border-crossing-hero.JPG" alt="Border Crossing — the mission that started it all" width="800">
+
+</div>
+
+Project I.G.I. has been one of my favorite games since I first played it back in 2008. Like a lot of players, I kept hitting missions that felt almost impossible to get through on a kid's patience and a kid's reflexes. The one I remember most is **Border Crossing** — the single most terrifying mission of all time, where one particular guard holding a Dragunov got killed roughly one million times by yours truly. 😂
+
+I'd creep through it carefully — searching for a safe route, rationing every bullet, trying not to take a single unnecessary hit. And then, without fail, that helicopter would show up. Circling overhead. Hunting.
+
+What made it across the line, mission after mission:
+
+- Limited health
+- Reduced ammunition
+- Very little cover
+- One specific guard with a Dragunov who apparently could not be killed enough times to make peace with it
+- The helicopter attacking from above, and a tank hunting you down — it felt less like a mission and more like a mission-fail simulator
+- Another restart
+- Another attempt at crossing the exact same stretch of dangerous ground
+
+That memory stayed with me for years, long after I'd stopped actively playing.
+
+Much later, instead of just going looking for another shortcut or a walkthrough, I got curious about something else entirely: *how does the game actually store all of this?* Where does it keep player health, accumulated damage, magazine ammunition, inventory quantities? That curiosity is what turned into my first real reverse-engineering project.
+
+What started as a childhood gaming grudge slowly became a full technical learning journey through:
+
+- Runtime memory observation
+- Static analysis
+- Pointer-chain discovery
+- Health and damage calculation
+- Inventory-record analysis
+- Magazine-state research
+- Defensive memory validation
+- Native Windows interface development
+- Direct2D rendering
+- Build automation
+- Public-source documentation
+
+**IGI Offline Trainer** was built out of that journey.
+
+It's meant for players who remember getting stuck at sections like Border Crossing and want to go back through the game on their own terms — a calmer, offline, single-player experience. It's also, honestly, just a personal tribute to a childhood game that stuck with me far longer than I expected.
+
+> A favorite childhood game. A brutal border crossing. A helicopter that never let up. One unforgettable mission that, years later, became my first reverse-engineering project.
+
+<div align="center">
+
+<!-- Add a personally recorded, lawful offline gameplay screenshot here. Remove usernames, folder paths, and any desktop notifications before uploading. -->
+<img src="assets/images/border-crossing-01.JPG" alt="The Approach — entering the exposed section of Border Crossing" width="720">
+
+**The Approach**
+*Carefully entering the exposed section of Border Crossing.*
+
+<br>
+
+<!-- Add a personally recorded, lawful offline gameplay screenshot here. -->
+<img src="assets/images/border-crossing-02.JPG" alt="That Helicopter — circling above and constantly attacking" width="720">
+
+**That Helicopter**
+*Circling above, and constantly attacking.*
+
+<br>
+
+<!-- Add a personally recorded, lawful offline gameplay screenshot here. -->
+<img src="assets/images/border-crossing-03.JPG" alt="Stuck Again — limited health, limited ammunition, another attempt to survive" width="720">
+
+**Stuck Again**
+*Limited health, limited ammunition, and another attempt to survive.*
+
+</div>
+
+These moments are the experience that inspired the trainer: pushing through the mission, losing health, running short on ammunition, hunting for cover, and getting stopped by the same helicopter again and again.
+
+> *All screenshots above should come from personally recorded, lawful offline gameplay. Before publishing, remove usernames, folder paths, desktop notifications, or any other private information.*
+
+<div align="center">
+
+<!-- Add a short gameplay GIF of Border Crossing here once recorded — see the "Media and Visual Assets" section below for size/format guidance. -->
+<img src="assets/gifs/border-crossing-demo.gif" alt="Border Crossing gameplay demo GIF — add your recording here" width="720">
+
+*Space reserved for a Border Crossing gameplay GIF — drop yours in at `assets/gifs/border-crossing-demo.gif`.*
+
+</div>
+
+---
 
 <div align="center">
 
@@ -184,6 +280,30 @@ graph LR
 │  [ About ]                              [ Exit ]│
 └────────────────────────────────────────────────┘
 ```
+
+### Live Demo GIFs
+
+<div align="center">
+
+<!-- Add your recorded trainer demo GIFs here. Suggested size: 960x540, 15-20 FPS. See "Media and Visual Assets" below for the exact ImageMagick command. -->
+
+<img src="assets/gifs/trainer-overview.gif" alt="Trainer overview demo GIF — add your recording here" width="720">
+
+*Overview: launching the trainer, attaching to the game, and the live LED status.*
+
+<br>
+
+<img src="assets/gifs/invincible-demo.gif" alt="Invincible feature demo GIF — add your recording here" width="360"> <img src="assets/gifs/magazine-demo.gif" alt="Magazine Auto-Fill demo GIF — add your recording here" width="360">
+
+*Left: Invincible in action. Right: Magazine Auto-Fill surviving a weapon switch.*
+
+<br>
+
+<img src="assets/gifs/inventory-demo.gif" alt="Inventory Auto-Max demo GIF — add your recording here" width="720">
+
+*Inventory Auto-Max keeping every carried item topped up in real time.*
+
+</div>
 
 ---
 
@@ -639,12 +759,17 @@ IGI-Offline-Trainer/
 ├── assets/
 │   ├── gifs/
 │   │   ├── README.md
+│   │   ├── border-crossing-demo.gif
 │   │   ├── trainer-overview.gif
 │   │   ├── invincible-demo.gif
 │   │   ├── magazine-demo.gif
 │   │   └── inventory-demo.gif
 │   └── images/
 │       ├── README.md
+│       ├── border-crossing-01.JPG
+│       ├── border-crossing-02.JPG
+│       ├── border-crossing-03.JPG
+│       ├── border-crossing-hero.JPG
 │       ├── hero-1600x900.png
 │       ├── ui-preview-1200x800.png
 │       └── social-preview-1280x640.png
@@ -701,6 +826,7 @@ graph TD
 - UI screenshot: `1200 x 800`
 - Social preview: `1280 x 640`
 - Application icon source: `1024 x 1024`
+- Border Crossing screenshots: `1600 x 900` (or your native capture resolution)
 - Demo GIF: `960 x 540`, 15 to 20 FPS
 
 ### ImageMagick Commands
@@ -1147,6 +1273,8 @@ flowchart LR
 ### Professional Offline Gameplay Experimentation Utility
 
 *Minimal • Native • Validated • Private • Offline-Only*
+
+*Built from one childhood mission that never stopped nagging at me.*
 
 <br>
 
