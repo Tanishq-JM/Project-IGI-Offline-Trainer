@@ -13,7 +13,7 @@
 <div align="center">
 
 <!-- THE hero shot. Get to the chokepoint where the Dragunov guard sits and grab your screenshot there — that's the moment this whole project is named after. -->
-<img src="assets/images/border-crossing-hero.jpg" alt="Border Crossing — the mission that started it all" width="800">
+<img src="assets/images/border-crossing-hero.JPG" alt="Border Crossing — the mission that started it all" width="800">
 
 </div>
 
@@ -58,7 +58,7 @@ It's meant for players who remember getting stuck at sections like Border Crossi
 <div align="center">
 
 <!-- Add a personally recorded, lawful offline gameplay screenshot here. Remove usernames, folder paths, and any desktop notifications before uploading. -->
-<img src="assets/images/border-crossing-01.jpg" alt="The Approach — entering the exposed section of Border Crossing" width="720">
+<img src="assets/images/border-crossing-01.JPG" alt="The Approach — entering the exposed section of Border Crossing" width="720">
 
 **The Approach**
 *Carefully entering the exposed section of Border Crossing.*
@@ -66,7 +66,7 @@ It's meant for players who remember getting stuck at sections like Border Crossi
 <br>
 
 <!-- Add a personally recorded, lawful offline gameplay screenshot here. -->
-<img src="assets/images/border-crossing-02.jpg" alt="That Helicopter — circling above and constantly attacking" width="720">
+<img src="assets/images/border-crossing-02.JPG" alt="That Helicopter — circling above and constantly attacking" width="720">
 
 **That Helicopter**
 *Circling above, and constantly attacking.*
@@ -74,7 +74,7 @@ It's meant for players who remember getting stuck at sections like Border Crossi
 <br>
 
 <!-- Add a personally recorded, lawful offline gameplay screenshot here. -->
-<img src="assets/images/border-crossing-03.jpg" alt="Stuck Again — limited health, limited ammunition, another attempt to survive" width="720">
+<img src="assets/images/border-crossing-03.JPG" alt="Stuck Again — limited health, limited ammunition, another attempt to survive" width="720">
 
 **Stuck Again**
 *Limited health, limited ammunition, and another attempt to survive.*
@@ -766,10 +766,10 @@ IGI-Offline-Trainer/
 │   │   └── inventory-demo.gif
 │   └── images/
 │       ├── README.md
-│       ├── border-crossing-01.jpg
-│       ├── border-crossing-02.jpg
-│       ├── border-crossing-03.jpg
-│       ├── border-crossing-hero.jpg
+│       ├── border-crossing-01.JPG
+│       ├── border-crossing-02.JPG
+│       ├── border-crossing-03.JPG
+│       ├── border-crossing-hero.JPG
 │       ├── hero-1600x900.png
 │       ├── ui-preview-1200x800.png
 │       └── social-preview-1280x640.png
