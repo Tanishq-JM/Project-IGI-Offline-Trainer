@@ -1,632 +1,309 @@
 <div align="center">
 
-# IGI Offline Trainer
+# Project IGI Trainer
 
-### A childhood mission I could never quite finish. A curiosity that never quite left.
+### A tool to finally beat the mission that haunted my childhood.
+
+<img src="assets/images/border-crossing-hero.jpg" alt="Project I.G.I. Border Crossing mission" width="820">
+
+<br>
+
+[Download the Latest Release](../../releases/latest) • [Build from Source](BUILD.md)
 
 </div>
+
+---
+
+## The Story
+
+Project I.G.I. has been one of my favorite childhood games since 2008. I played it again and again, but one mission always stopped me: **Border Crossing**.
+
+I would move carefully, save ammunition, and avoid damage. Then the helicopter would appear and keep attacking from above. The tank made the area harder. The guard with the Dragunov became part of the memory too. I defeated that guard many times, and that guard defeated me many times back. 😂
+
+Every attempt felt the same:
+
+- Health became low
+- Ammunition ran out
+- Safe cover was difficult to find
+- The helicopter kept circling
+- The tank kept moving through the area
+- The mission restarted
+- Another attempt began
+
+Years later, I became curious about how the game stores health, damage, magazine ammunition, and inventory quantities while a mission is running. That curiosity became **Project IGI Trainer**.
+
+This trainer is for players who remember becoming stuck in difficult missions and want to revisit the game in a more relaxed offline experience. It is also a technical learning project built around runtime memory, pointer chains, validation, native Windows programming, and a compact Direct2D interface.
+
+> **A favorite childhood game. A difficult border crossing. A helicopter that would not leave me alone. One old memory that became a complete technical project.**
 
 ---
 
 ## Remember Border Crossing?
 
+<table>
+<tr>
+<td align="center" width="33.33%">
+<img src="assets/images/border-crossing-01.jpg" alt="Approaching Border Crossing" width="100%">
+<br><strong>The Approach</strong>
+<br><sub>Entering the exposed section carefully.</sub>
+</td>
+<td align="center" width="33.33%">
+<img src="assets/images/border-crossing-02.jpg" alt="The helicopter at Border Crossing" width="100%">
+<br><strong>That Helicopter</strong>
+<br><sub>Circling above and attacking again.</sub>
+</td>
+<td align="center" width="33.33%">
+<img src="assets/images/border-crossing-03.jpg" alt="Stuck at Border Crossing" width="100%">
+<br><strong>Stuck Again</strong>
+<br><sub>Low health, low ammunition, another restart.</sub>
+</td>
+</tr>
+</table>
+
+Use screenshots captured from your own lawful offline gameplay. Remove usernames, folder paths, notifications, and other private information before publishing.
+
+---
+
+## What It Does
+
+Three hotkeys. Three features. That is the whole idea.
+
+```text
+F1   Invincible
+F2   Magazine Auto-Fill
+F3   Inventory Auto-Max
+F12  Disable every feature immediately
+```
+
+### Status Lights
+
+- **Green:** The feature is enabled and the latest game data was valid
+- **Amber:** The feature is enabled but waiting for the game or a transition
+- **Gray:** The feature is off
+- **Red:** A persistent access or compatibility problem was detected
+
+The window also shows how many successful corrections each feature made during the current session.
+
+---
+
+## Gameplay Demonstrations
+
+### Trainer Overview
+
 <div align="center">
-
-<!-- THE hero shot. Get to the chokepoint where the Dragunov guard sits and grab your screenshot there — that's the moment this whole project is named after. -->
-<img src="assets/images/border-crossing-hero.JPG" alt="Border Crossing — the mission that started it all" width="800">
-
+<img src="assets/gifs/trainer-overview.gif" alt="Project IGI Trainer interface demonstration" width="720">
+<br><sub>Game detection, mission detection, feature controls, and live counters.</sub>
 </div>
 
-Project I.G.I. has been one of my favorite games since I first played it back in 2008. Like a lot of players, I kept hitting missions that felt almost impossible to get through on a kid's patience and a kid's reflexes. The one I remember most is **Border Crossing** — the single most terrifying mission of all time, where one particular guard holding a Dragunov got killed roughly one million times by yours truly. 😂
-
-I'd creep through it carefully — searching for a safe route, rationing every bullet, trying not to take a single unnecessary hit. And then, without fail, that helicopter would show up. Circling overhead. Hunting.
-
-What made it across the line, mission after mission:
-
-- Limited health
-- Reduced ammunition
-- Very little cover
-- One specific guard with a Dragunov who apparently could not be killed enough times to make peace with it
-- The helicopter attacking from above, and a tank hunting you down — it felt less like a mission and more like a mission-fail simulator
-- Another restart
-- Another attempt at crossing the exact same stretch of dangerous ground
-
-That memory stayed with me for years, long after I'd stopped actively playing.
-
-Much later, instead of just going looking for another shortcut or a walkthrough, I got curious about something else entirely: *how does the game actually store all of this?* Where does it keep player health, accumulated damage, magazine ammunition, inventory quantities? That curiosity is what turned into my first real reverse-engineering project.
-
-What started as a childhood gaming grudge slowly became a full technical learning journey through:
-
-- Runtime memory observation
-- Static analysis
-- Pointer-chain discovery
-- Health and damage calculation
-- Inventory-record analysis
-- Magazine-state research
-- Defensive memory validation
-- Native Windows interface development
-- Direct2D rendering
-- Build automation
-- Public-source documentation
-
-**IGI Offline Trainer** was built out of that journey.
-
-It's meant for players who remember getting stuck at sections like Border Crossing and want to go back through the game on their own terms — a calmer, offline, single-player experience. It's also, honestly, just a personal tribute to a childhood game that stuck with me far longer than I expected.
-
-> A favorite childhood game. A brutal border crossing. A helicopter that never let up. One unforgettable mission that, years later, became my first reverse-engineering project.
+### Border Crossing
 
 <div align="center">
-
-<!-- Add a personally recorded, lawful offline gameplay screenshot here. Remove usernames, folder paths, and any desktop notifications before uploading. -->
-<img src="assets/images/border-crossing-01.JPG" alt="The Approach — entering the exposed section of Border Crossing" width="720">
-
-**The Approach**
-*Carefully entering the exposed section of Border Crossing.*
-
-<br>
-
-<!-- Add a personally recorded, lawful offline gameplay screenshot here. -->
-<img src="assets/images/border-crossing-02.JPG" alt="That Helicopter — circling above and constantly attacking" width="720">
-
-**That Helicopter**
-*Circling above, and constantly attacking.*
-
-<br>
-
-<!-- Add a personally recorded, lawful offline gameplay screenshot here. -->
-<img src="assets/images/border-crossing-03.JPG" alt="Stuck Again — limited health, limited ammunition, another attempt to survive" width="720">
-
-**Stuck Again**
-*Limited health, limited ammunition, and another attempt to survive.*
-
+<img src="assets/gifs/border-crossing-demo.gif" alt="Border Crossing gameplay demonstration" width="720">
+<br><sub>Returning to the mission that inspired the project.</sub>
 </div>
 
-These moments are the experience that inspired the trainer: pushing through the mission, losing health, running short on ammunition, hunting for cover, and getting stopped by the same helicopter again and again.
+### Feature Demonstrations
 
-> *All screenshots above should come from personally recorded, lawful offline gameplay. Before publishing, remove usernames, folder paths, desktop notifications, or any other private information.*
+<table>
+<tr>
+<td align="center" width="50%">
+<img src="assets/gifs/invincible-demo.gif" alt="Invincible demonstration" width="100%">
+<br><strong>Invincible</strong>
+<br><sub>Validated accumulated damage is kept at zero.</sub>
+</td>
+<td align="center" width="50%">
+<img src="assets/gifs/magazine-demo.gif" alt="Magazine Auto-Fill demonstration" width="100%">
+<br><strong>Magazine Auto-Fill</strong>
+<br><sub>The active magazine is restored after firing.</sub>
+</td>
+</tr>
+</table>
 
 <div align="center">
-
-<!-- Add a short gameplay GIF of Border Crossing here once recorded — see the "Media and Visual Assets" section below for size/format guidance. -->
-<img src="assets/gifs/border-crossing-demo.gif" alt="Border Crossing gameplay demo GIF — add your recording here" width="720">
-
-*Space reserved for a Border Crossing gameplay GIF — drop yours in at `assets/gifs/border-crossing-demo.gif`.*
-
+<img src="assets/gifs/inventory-demo.gif" alt="Inventory Auto-Max demonstration" width="720">
+<br><sub>Valid inventory quantities are maintained automatically.</sub>
 </div>
 
 ---
 
-<div align="center">
+## Memory Map: The Big Picture
 
-## Professional GPU-Rendered Offline Gameplay Utility
+Memory is linear. An address is one position in the process address space. The `igi.exe` module and runtime objects occupy different ranges. The module contains pointer roots. Those roots lead to runtime objects such as the player and magazine objects.
 
-*Minimal Direct2D interface for health protection, magazine auto-fill, and dynamic inventory management in an authorized offline Project I.G.I. installation*
-
-**Direct2D • C++20 • Win32 • x86 • Visual Studio 2026 • No Game Files Included**
-
-[Download the Latest Compiled Release](../../releases/latest)
-
-</div>
-
----
-
-## Overview
-
-IGI Offline Trainer is a professional Windows desktop utility designed for authorized offline, single-player experimentation with Project I.G.I. The application combines a minimal GPU-rendered Direct2D interface with persistent gameplay policies, strict memory validation, dynamic pointer resolution, live LED status indicators, and per-feature correction counters.
-
-The C++20 implementation preserves the operational behavior confirmed by the author's working Python v2 prototype and technical research. It is configured for the specific 32-bit executable layout used during development. Runtime heap addresses may move between missions, so the application resolves the required object chains continuously rather than storing final addresses permanently.
-
-> **Offline use only:** This project must not be used with networked games, competitive environments, anti-cheat systems, unauthorized copies, third-party computers, or remote services.
+The following diagrams are not drawn to byte scale. The left-to-right order represents lower addresses to higher addresses.
 
 ```mermaid
-%%{init: {'theme':'base', 'themeVariables': { 'primaryColor':'#EEF2FF','primaryTextColor':'#312E81','primaryBorderColor':'#A5B4FC','lineColor':'#818CF8','secondaryColor':'#ECFEFF','tertiaryColor':'#ECFDF5','noteBkgColor':'#FEF3C7','noteTextColor':'#78350F','noteBorderColor':'#FCD34D'}}}%%
+%%{init: {'theme':'base', 'themeVariables': {'background':'#0F1117','primaryColor':'#20263A','primaryTextColor':'#F6F3FF','primaryBorderColor':'#8E93B8','lineColor':'#B7B2CC','secondaryColor':'#1D2C35','secondaryTextColor':'#F3FAFC','secondaryBorderColor':'#7E9BAA','tertiaryColor':'#342633','tertiaryTextColor':'#FFF2FB','tertiaryBorderColor':'#A17F9D','noteBkgColor':'#332C20','noteTextColor':'#FFF7E8','noteBorderColor':'#AA946D','fontFamily':'Segoe UI'}}}%%
+flowchart LR
+    Low["0x00000000<br/>Lowest address"] --> Guard["0x00010000<br/>Low-address guard"]
+    Guard --> Module["igi.exe module range<br/>code, data, pointer roots"]
+    Module --> Mapped["Other loaded modules<br/>and mapped regions"]
+    Mapped --> Runtime["Runtime allocations<br/>player, inventory, weapon objects"]
+    Runtime --> High["Below 0x80000000<br/>Expected 32-bit user range"]
+
+    style Low fill:#252A33,stroke:#777F91,color:#F1F3F7
+    style Guard fill:#332C20,stroke:#AA946D,color:#FFF7E8
+    style Module fill:#20263A,stroke:#8E93B8,color:#F6F3FF
+    style Mapped fill:#2A2734,stroke:#8C849D,color:#F8F4FF
+    style Runtime fill:#203127,stroke:#79A68A,color:#F0FFF5
+    style High fill:#252A33,stroke:#777F91,color:#F1F3F7
+```
+
+The trainer accepts a resolved pointer only when it is inside this expected range:
+
+```text
+0x00010000 <= pointer < 0x80000000
+```
+
+---
+
+## RAM Structure and Containment
+
+This diagram shows what belongs to the module and what belongs to runtime memory.
+
+```mermaid
+%%{init: {'theme':'base', 'themeVariables': {'background':'#0F1117','primaryColor':'#20263A','primaryTextColor':'#F6F3FF','primaryBorderColor':'#8E93B8','lineColor':'#B7B2CC','secondaryColor':'#1D2C35','secondaryTextColor':'#F3FAFC','secondaryBorderColor':'#7E9BAA','tertiaryColor':'#342633','tertiaryTextColor':'#FFF2FB','tertiaryBorderColor':'#A17F9D','fontFamily':'Segoe UI'}}}%%
+flowchart TD
+    Process["igi.exe process address space"]
+
+    Process --> Module["igi.exe module mapping"]
+    Process --> Runtime["Runtime allocations"]
+
+    Module --> PlayerRoot["Player root pointer slot<br/>Module + 0x16E210"]
+    Module --> MagazineRoot["Magazine root pointer slot<br/>Module + 0x671890"]
+
+    Runtime --> PlayerObject["Player object"]
+    Runtime --> MagazineObject["Magazine-related object"]
+    Runtime --> OtherObjects["Other game objects"]
+
+    PlayerObject --> HealthArea["Health area"]
+    PlayerObject --> InventoryArea["Inventory area"]
+
+    HealthArea --> Damage["Damage<br/>Player + 0x254"]
+    HealthArea --> Capacity["Capacity<br/>Player + 0x258"]
+
+    InventoryArea --> Count["Item count<br/>Player + 0x340"]
+    InventoryArea --> Records["Item records<br/>Player + 0x344"]
+
+    Records --> Record["One 12-byte record"]
+    Record --> ID["ID<br/>Record + 0x00"]
+    Record --> Current["Current<br/>Record + 0x04"]
+    Record --> Maximum["Maximum<br/>Record + 0x08"]
+
+    MagazineObject --> Magazine["Magazine count<br/>Chain result + 0x144"]
+
+    PlayerRoot -. "pointer chain" .-> PlayerObject
+    MagazineRoot -. "pointer chain" .-> MagazineObject
+
+    style Process fill:#252A33,stroke:#777F91,color:#F1F3F7
+    style Module fill:#20263A,stroke:#8E93B8,color:#F6F3FF
+    style Runtime fill:#1D2C35,stroke:#7E9BAA,color:#F3FAFC
+    style PlayerObject fill:#203127,stroke:#79A68A,color:#F0FFF5
+    style MagazineObject fill:#342633,stroke:#A17F9D,color:#FFF2FB
+    style HealthArea fill:#332C20,stroke:#AA946D,color:#FFF7E8
+    style InventoryArea fill:#203127,stroke:#79A68A,color:#F0FFF5
+    style Current fill:#203127,stroke:#79A68A,color:#F0FFF5
+```
+
+---
+
+## Complete Memory Address Reference
+
+This Mermaid diagram replaces a plain address table. Every known location is grouped by the object that owns it.
+
+```mermaid
+%%{init: {'theme':'base', 'themeVariables': {'background':'#0F1117','primaryColor':'#20263A','primaryTextColor':'#F6F3FF','primaryBorderColor':'#8E93B8','lineColor':'#B7B2CC','secondaryColor':'#1D2C35','secondaryTextColor':'#F3FAFC','secondaryBorderColor':'#7E9BAA','tertiaryColor':'#342633','tertiaryTextColor':'#FFF2FB','tertiaryBorderColor':'#A17F9D','fontFamily':'Segoe UI'}}}%%
 flowchart TB
-    Start([Trainer Launch]) --> UI[Initialize Win32 Window]
-    UI --> GPU[Create Direct2D and DirectWrite Resources]
-    GPU --> Worker[Start Background Trainer Worker]
+    subgraph Module["igi.exe Module"]
+        PR["PLAYER ROOT<br/>Offset: Module + 0x16E210<br/>Type: Pointer chain<br/>Meaning: Start here to find the player"]
+        MR["MAGAZINE ROOT<br/>Offset: Module + 0x671890<br/>Type: Pointer chain<br/>Meaning: Start here to find gun ammunition"]
+    end
 
-    Worker --> Detect{igi.exe Running?}
-    Detect -->|No| Waiting[Amber LED: Waiting for Game]
-    Waiting --> Detect
-    Detect -->|Yes| Attach[Open Authorized Local Process]
+    subgraph Player["Resolved Player Object"]
+        HD["HEALTH - DAMAGE<br/>Offset: Player + 0x254<br/>Type: Float32<br/>Meaning: Accumulated damage<br/>0 while Invincible corrects it"]
+        HC["HEALTH - CAPACITY<br/>Offset: Player + 0x258<br/>Type: Float32<br/>Meaning: Damage capacity<br/>Often 100 in the tested state"]
+        IC["ITEM COUNT<br/>Offset: Player + 0x340<br/>Type: Int32<br/>Meaning: Number of inventory records"]
+        IS["ITEMS START<br/>Offset: Player + 0x344<br/>Type: Record array<br/>Meaning: First 12-byte inventory record"]
+    end
 
-    Attach --> Module[Resolve Module Base]
-    Module --> Player{Player Object Valid?}
-    Player -->|No| MissionWait[Amber LED: Start or Resume Mission]
-    MissionWait --> Player
-    Player -->|Yes| Active[Green Status: Mission Active]
+    subgraph Record["One Inventory Record - 12 Bytes"]
+        RID["ITEM.ID<br/>Offset: Record + 0x00<br/>Type: Int32<br/>Meaning: Which item this record represents<br/>Read only"]
+        RCUR["ITEM.CURRENT<br/>Offset: Record + 0x04<br/>Type: Int32<br/>Meaning: Current quantity<br/>Validated field changed by trainer"]
+        RMAX["ITEM.MAX<br/>Offset: Record + 0x08<br/>Type: Int32<br/>Meaning: Maximum quantity<br/>Read only"]
+    end
 
-    Active --> Policies{Enabled Policies}
-    Policies --> Health[Invincible Policy]
-    Policies --> Magazine[Magazine Auto-Fill Policy]
-    Policies --> Inventory[Inventory Auto-Max Policy]
+    subgraph Gun["Resolved Magazine Object"]
+        MAG["MAGAZINE<br/>Offset: Chain result + 0x144<br/>Type: Int32<br/>Meaning: Bullets in current gun"]
+    end
 
-    Health --> ValidateHealth[Validate Damage and Capacity]
-    ValidateHealth --> HealthWrite[Write Damage = 0]
+    PR -. "resolves" .-> Player
+    IS --> Record
+    MR -. "resolves" .-> Gun
+    HD --> HC --> IC --> IS
+    RID --> RCUR --> RMAX
 
-    Magazine --> ResolveMag[Resolve Current Magazine Chain]
-    ResolveMag --> ValidateMag[Validate Plausible Range]
-    ValidateMag --> MagWrite[Write Magazine Target]
-
-    Inventory --> ReadTable[Read Runtime Record Count]
-    ReadTable --> ValidateTable[Validate 0 to 64 Records]
-    ValidateTable --> InventoryWrite[Update Current Fields Only]
-
-    HealthWrite --> Counters[Increment Session Counters]
-    MagWrite --> Counters
-    InventoryWrite --> Counters
-    Counters --> Render[Render LED State and Statistics]
-    Render --> Active
-
-    style Start fill:#EEF2FF,stroke:#818CF8,stroke-width:3px,color:#312E81
-    style Active fill:#ECFDF5,stroke:#34D399,stroke-width:3px,color:#065F46
-    style Detect fill:#FEF3C7,stroke:#FCD34D,stroke-width:2px,color:#78350F
-    style Player fill:#FEF3C7,stroke:#FCD34D,stroke-width:2px,color:#78350F
-    style Policies fill:#FDF2F8,stroke:#F9A8D4,stroke-width:2px,color:#831843
-    style GPU fill:#ECFEFF,stroke:#22D3EE,stroke-width:2px,color:#164E63
-    style Counters fill:#EEF2FF,stroke:#A5B4FC,stroke-width:2px,color:#312E81
+    style Module fill:#20263A,stroke:#8E93B8,color:#F6F3FF
+    style Player fill:#1D2C35,stroke:#7E9BAA,color:#F3FAFC
+    style Record fill:#203127,stroke:#79A68A,color:#F0FFF5
+    style Gun fill:#342633,stroke:#A17F9D,color:#FFF2FB
+    style PR fill:#282E46,stroke:#9BA1D0,color:#F7F5FF
+    style MR fill:#3A2938,stroke:#B188AE,color:#FFF4FC
+    style HD fill:#3A2938,stroke:#B188AE,color:#FFF4FC
+    style HC fill:#3A3224,stroke:#B59D73,color:#FFF8E9
+    style IC fill:#24353E,stroke:#86A7B5,color:#F2FBFD
+    style IS fill:#24382C,stroke:#84AF91,color:#F1FFF5
+    style RCUR fill:#294632,stroke:#8BC09A,color:#F1FFF5
+    style MAG fill:#294632,stroke:#8BC09A,color:#F1FFF5
 ```
 
 ---
 
-## Key Features
+## Linear `igi.exe` Module Map
 
-### **Persistent Gameplay Policies**
-
-- **F1 Invincible:** Maintains the confirmed accumulated-damage field at zero while enabled
-- **F2 Magazine Auto-Fill:** Maintains the current weapon magazine at the configured target
-- **F3 Inventory Auto-Max:** Continuously updates every valid runtime inventory record
-- **F12 Emergency Disable:** Immediately disables all active gameplay policies
-- Policies remain enabled through temporary loading, weapon switching, and object-transition states
-- Invalid data skips only the current polling cycle instead of disabling the selected feature
-
-### **Minimal GPU-Rendered Interface**
-
-- Native Win32 desktop application
-- Direct2D GPU-accelerated card rendering
-- DirectWrite typography
-- No browser engine, Electron runtime, or embedded web view
-- Three focused feature cards with hotkey labels
-- Live process, mission, health, feature, and session-correction status
-- Compact About dialog with scope and authorship information
-
-### **Professional LED Status System**
-
-- **Green:** Feature enabled and latest runtime state validated successfully
-- **Amber:** Feature enabled but temporarily waiting for a valid mission object or transition
-- **Gray:** Feature disabled
-- **Red:** Reserved for persistent access or compatibility failure
-- Session counters display successful corrections performed by each feature
-
-### **Defensive Runtime Validation**
-
-- Every pointer is checked before dereferencing
-- Runtime player object is resolved repeatedly
-- Inventory count is limited to a conservative safe range
-- Health values must be finite and capacity must be positive
-- Magazine values must remain inside a plausible range
-- Inventory ID and maximum fields are never modified
-- Only independently confirmed mutable fields are eligible for writes
-
-### **Privacy-First Local Operation**
-
-- No telemetry
-- No remote analytics
-- No account system
-- No cloud dependency
-- No remote logging
-- No network service
-- No DLL injection
-- No hooks
-- No game executables or proprietary game assets included
-
----
-
-## Interface Experience
+These known module offsets appear in increasing address order. The spaces between them contain other code and data that this trainer does not use.
 
 ```mermaid
-%%{init: {'theme':'base', 'themeVariables': { 'primaryColor':'#ECFEFF','primaryTextColor':'#164E63','primaryBorderColor':'#67E8F9','lineColor':'#818CF8','secondaryColor':'#EEF2FF','tertiaryColor':'#ECFDF5'}}}%%
-graph LR
-    subgraph Header[Application Header]
-        Brand[IGI Trainer]
-        Scope[Offline Single-Player Utility]
-        ProcessLED[Live Process LED]
-    end
-
-    subgraph Cards[Feature Cards]
-        Invincible[Invincible Card<br/>F1 and Correction Count]
-        Magazine[Magazine Auto-Fill Card<br/>F2 and Refill Count]
-        Inventory[Inventory Auto-Max Card<br/>F3 and Record Update Count]
-    end
-
-    subgraph Footer[Status and Actions]
-        Health[Calculated Health Percentage]
-        About[About Dialog]
-        Exit[Safe Exit]
-    end
-
-    Header --> Cards
-    Cards --> Footer
-
-    style Brand fill:#EEF2FF,stroke:#A5B4FC,stroke-width:2px,color:#312E81
-    style Scope fill:#ECFEFF,stroke:#67E8F9,stroke-width:2px,color:#164E63
-    style ProcessLED fill:#ECFDF5,stroke:#6EE7B7,stroke-width:2px,color:#065F46
-    style Invincible fill:#FDF2F8,stroke:#F9A8D4,stroke-width:2px,color:#831843
-    style Magazine fill:#FEF3C7,stroke:#FCD34D,stroke-width:2px,color:#78350F
-    style Inventory fill:#EEF2FF,stroke:#A5B4FC,stroke-width:2px,color:#312E81
-    style Health fill:#ECFDF5,stroke:#6EE7B7,stroke-width:2px,color:#065F46
-```
-
-### Minimal UI Layout
-
-```text
-┌────────────────────────────────────────────────┐
-│  IGI TRAINER                         ● READY   │
-│  Offline single-player utility                 │
-├────────────────────────────────────────────────┤
-│  ●  INVINCIBLE                           [F1]  │
-│     Maintains accumulated damage at zero       │
-│                               18 corrections   │
-├────────────────────────────────────────────────┤
-│  ●  MAGAZINE AUTO-FILL                   [F2]  │
-│     Maintains the active magazine target       │
-│                               73 corrections   │
-├────────────────────────────────────────────────┤
-│  ●  INVENTORY AUTO-MAX                   [F3]  │
-│     Maintains active inventory quantities      │
-│                              156 corrections   │
-├────────────────────────────────────────────────┤
-│  HEALTH 100.0%       Click a card or hotkey    │
-│  [ About ]                              [ Exit ]│
-└────────────────────────────────────────────────┘
-```
-
-### Live Demo GIFs
-
-<div align="center">
-
-<!-- Add your recorded trainer demo GIFs here. Suggested size: 960x540, 15-20 FPS. See "Media and Visual Assets" below for the exact ImageMagick command. -->
-
-<img src="assets/gifs/trainer-overview.gif" alt="Trainer overview demo GIF — add your recording here" width="720">
-
-*Overview: launching the trainer, attaching to the game, and the live LED status.*
-
-<br>
-
-<img src="assets/gifs/invincible-demo.gif" alt="Invincible feature demo GIF — add your recording here" width="360"> <img src="assets/gifs/magazine-demo.gif" alt="Magazine Auto-Fill demo GIF — add your recording here" width="360">
-
-*Left: Invincible in action. Right: Magazine Auto-Fill surviving a weapon switch.*
-
-<br>
-
-<img src="assets/gifs/inventory-demo.gif" alt="Inventory Auto-Max demo GIF — add your recording here" width="720">
-
-*Inventory Auto-Max keeping every carried item topped up in real time.*
-
-</div>
-
----
-
-## System Requirements
-
-```mermaid
-%%{init: {'theme':'base', 'themeVariables': { 'primaryColor':'#FDF2F8','primaryTextColor':'#831843','primaryBorderColor':'#F9A8D4','lineColor':'#F9A8D4','secondaryColor':'#ECFEFF','tertiaryColor':'#FEF3C7'}}}%%
-graph LR
-    subgraph Runtime[Runtime Requirements]
-        OS[Windows 10 or 11<br/>64-bit Host]
-        Game[Lawfully Obtained<br/>32-bit Project I.G.I.]
-        Mode[Offline Single-Player<br/>Mission]
-    end
-
-    subgraph Build[Build Requirements]
-        VS[Visual Studio Community 2026]
-        Workload[Desktop Development with C++]
-        MSVC[MSVC x64 and x86 Tools]
-        SDK[Windows 11 SDK 10.0.26100]
-        CMake[CMake 3.21 or Newer]
-        Git[Git for Repository Operations]
-    end
-
-    Runtime --> Build
-
-    style OS fill:#E0F2FE,stroke:#7DD3FC,stroke-width:2px,color:#075985
-    style Game fill:#FDF2F8,stroke:#F9A8D4,stroke-width:2px,color:#831843
-    style Mode fill:#ECFDF5,stroke:#6EE7B7,stroke-width:2px,color:#065F46
-    style VS fill:#EEF2FF,stroke:#A5B4FC,stroke-width:2px,color:#312E81
-    style Workload fill:#FEF3C7,stroke:#FCD34D,stroke-width:2px,color:#78350F
-    style MSVC fill:#ECFEFF,stroke:#67E8F9,stroke-width:2px,color:#164E63
-    style SDK fill:#ECFDF5,stroke:#6EE7B7,stroke-width:2px,color:#065F46
-    style CMake fill:#EEF2FF,stroke:#A5B4FC,stroke-width:2px,color:#312E81
-    style Git fill:#FDF2F8,stroke:#F9A8D4,stroke-width:2px,color:#831843
-```
-
-### Required Visual Studio Components
-
-Open **Visual Studio Installer**, select **Modify** for Visual Studio Community 2026, and verify:
-
-- **Desktop development with C++** workload
-- MSVC C++ x64/x86 build tools
-- C++ CMake tools for Windows
-- Windows 11 SDK `10.0.26100.0` or a compatible installed SDK
-- C++ core desktop features
-- Windows Resource Compiler
-
-### Build Environment Verification
-
-Use **Developer PowerShell for Visual Studio 2026** and run:
-
-```powershell
-where.exe cmake
-where.exe cl
-where.exe link
-where.exe rc
-cmake --version
-cmake --help | Select-String "Visual Studio"
-```
-
-The required compiler target is **Win32/x86**, because the supported game executable and documented pointer model use the 32-bit address space.
-
----
-
-## Build Process
-
-```mermaid
-%%{init: {'theme':'base', 'themeVariables': { 'primaryColor':'#EEF2FF','primaryTextColor':'#312E81','primaryBorderColor':'#A5B4FC','lineColor':'#818CF8','secondaryColor':'#ECFEFF','tertiaryColor':'#ECFDF5'}}}%%
-sequenceDiagram
-    autonumber
-    participant Developer
-    participant VS as Visual Studio 2026 Environment
-    participant CMake
-    participant MSVC as MSVC Compiler
-    participant SDK as Windows SDK
-    participant Output as Release Output
-
-    Developer->>VS: Open Developer PowerShell
-    VS->>SDK: Load compiler and SDK environment
-    Developer->>CMake: Configure Visual Studio 18 2026 Win32
-    CMake->>MSVC: Detect C++20 compiler
-    CMake->>SDK: Detect Direct2D, DirectWrite and Resource Compiler
-    SDK-->>CMake: Headers and libraries available
-    MSVC-->>CMake: Compiler available
-    CMake-->>Developer: Configuration generated
-    Developer->>CMake: Build Release target
-    CMake->>MSVC: Compile source modules
-    MSVC->>SDK: Link Win32, Direct2D and DirectWrite libraries
-    SDK-->>Output: Create IGI-Offline-Trainer.exe
-    Output-->>Developer: Release executable ready
-```
-
-### Recommended Local Build
-
-Open **Developer PowerShell for Visual Studio 2026**:
-
-```powershell
-cd "FULL\PATH\TO\IGI-Offline-Trainer"
-
-cmake -S . -B build -G "Visual Studio 18 2026" -A Win32
-cmake --build build --config Release --parallel
-```
-
-Expected executable:
-
-```text
-build\bin\Release\IGI-Offline-Trainer.exe
-```
-
-### CMake Preset Build
-
-```powershell
-cmake --preset windows-x86-release
-cmake --build --preset release
-```
-
-Expected executable:
-
-```text
-out\build\x86-release\bin\Release\IGI-Offline-Trainer.exe
-```
-
-### Clean Rebuild
-
-```powershell
-if (Test-Path ".\build") {
-    Remove-Item ".\build" -Recurse -Force
-}
-
-cmake -S . -B build -G "Visual Studio 18 2026" -A Win32
-cmake --build build --config Release --parallel
-```
-
----
-
-## Usage Workflow
-
-```mermaid
-%%{init: {'theme':'base', 'themeVariables': { 'primaryColor':'#FDF2F8','primaryTextColor':'#831843','primaryBorderColor':'#F9A8D4','lineColor':'#A5B4FC','secondaryColor':'#EEF2FF','tertiaryColor':'#ECFDF5'}}}%%
-stateDiagram-v2
-    [*] --> StartGame
-    StartGame: Start a lawful offline Project I.G.I. mission
-    StartGame --> LaunchTrainer
-    LaunchTrainer: Launch IGI-Offline-Trainer.exe
-    LaunchTrainer --> Waiting
-    Waiting: Amber status while locating igi.exe
-    Waiting --> Attached: Process detected
-    Attached --> MissionActive: Player object resolved
-    MissionActive --> SelectFeatures
-
-    state SelectFeatures {
-        [*] --> Idle
-        Idle --> Invincible: F1 or select card
-        Idle --> Magazine: F2 or select card
-        Idle --> Inventory: F3 or select card
-        Invincible --> Idle: Toggle off
-        Magazine --> Idle: Toggle off
-        Inventory --> Idle: Toggle off
-    }
-
-    SelectFeatures --> EmergencyDisable: F12
-    EmergencyDisable --> SelectFeatures
-    SelectFeatures --> ExitTrainer: Exit selected
-    ExitTrainer --> [*]
-```
-
-### Step-by-Step Usage
-
-1. Start a lawful offline Project I.G.I. mission.
-2. Launch `IGI-Offline-Trainer.exe`.
-3. Wait for the process status to indicate that `igi.exe` is attached.
-4. Wait for the mission state to become active.
-5. Select a feature card or use F1, F2, or F3.
-6. Observe the LED state and correction counter.
-7. Press F12 to disable all features immediately.
-8. Exit the trainer before leaving the offline session.
-
-### Hotkeys
-
-```text
-F1   Toggle Invincible
-F2   Toggle Magazine Auto-Fill
-F3   Toggle Inventory Auto-Max
-F12  Emergency Disable All Features
-```
-
----
-
-## Runtime Architecture
-
-```mermaid
-%%{init: {'theme':'base', 'themeVariables': { 'primaryColor':'#ECFEFF','primaryTextColor':'#164E63','primaryBorderColor':'#67E8F9','lineColor':'#818CF8','secondaryColor':'#EEF2FF','tertiaryColor':'#ECFDF5'}}}%%
-graph TB
-    subgraph Presentation[GPU Presentation Layer]
-        Window[Win32 Window]
-        Direct2D[Direct2D Renderer]
-        DirectWrite[DirectWrite Typography]
-        LEDs[LED State Indicators]
-        Statistics[Correction Counters]
-    end
-
-    subgraph Control[Application Control Layer]
-        UIThread[UI Thread]
-        WorkerThread[Worker Thread]
-        Snapshot[Mutex-Protected UI Snapshot]
-        Hotkeys[Global Polling Hotkeys]
-    end
-
-    subgraph Memory[Validated Memory Layer]
-        Process[Process Discovery and Attachment]
-        Module[Module Base Resolution]
-        Player[Player Pointer Resolver]
-        MagazineResolver[Magazine Pointer Resolver]
-        Reader[Typed Memory Reads]
-        Writer[Bounded Typed Writes]
-    end
-
-    subgraph Policies[Persistent Policy Layer]
-        InvinciblePolicy[Invincible Policy]
-        MagazinePolicy[Magazine Auto-Fill Policy]
-        InventoryPolicy[Inventory Auto-Max Policy]
-    end
-
-    Presentation --> Control
-    Control --> Memory
-    Memory --> Policies
-    Policies --> Snapshot
-    Snapshot --> Presentation
-
-    style Presentation fill:#EEF2FF,stroke:#A5B4FC,stroke-width:2px,color:#312E81
-    style Control fill:#ECFEFF,stroke:#67E8F9,stroke-width:2px,color:#164E63
-    style Memory fill:#FEF3C7,stroke:#FCD34D,stroke-width:2px,color:#78350F
-    style Policies fill:#ECFDF5,stroke:#6EE7B7,stroke-width:2px,color:#065F46
-```
-
-### Architecture Components
-
-- **Win32 application shell:** Creates and manages the native Windows application window
-- **Direct2D:** Renders the background, cards, controls, borders, and LED indicators
-- **DirectWrite:** Renders clean text and live numeric information
-- **UI thread:** Owns all graphical resources and processes application messages
-- **Worker thread:** Owns attachment, pointer resolution, validation, and bounded update policies
-- **Snapshot bridge:** Shares only the small current UI state under mutex protection
-- **Process memory layer:** Provides typed read and write operations through Windows APIs
-- **Policy layer:** Applies only explicitly enabled and validated gameplay policies
-
----
-
-## Health and Damage Model
-
-```mermaid
-%%{init: {'theme':'base', 'themeVariables': { 'primaryColor':'#ECFDF5','primaryTextColor':'#065F46','primaryBorderColor':'#6EE7B7','lineColor':'#A5B4FC','secondaryColor':'#EEF2FF','tertiaryColor':'#FEF3C7'}}}%%
+%%{init: {'theme':'base', 'themeVariables': {'background':'#0F1117','primaryColor':'#20263A','primaryTextColor':'#F6F3FF','primaryBorderColor':'#8E93B8','lineColor':'#B7B2CC','secondaryColor':'#1D2C35','secondaryTextColor':'#F3FAFC','secondaryBorderColor':'#7E9BAA','tertiaryColor':'#342633','tertiaryTextColor':'#FFF2FB','tertiaryBorderColor':'#A17F9D','fontFamily':'Segoe UI'}}}%%
 flowchart LR
-    Player[Resolved Player Object] --> Damage[Read Float32 at +0x254<br/>Accumulated Damage]
-    Player --> Capacity[Read Float32 at +0x258<br/>Damage Capacity]
-    Damage --> Validate{Finite Values?}
-    Capacity --> Validate
-    Validate -->|No| Skip[Skip Current Cycle]
-    Validate -->|Yes| Positive{Capacity Greater Than Zero?}
-    Positive -->|No| Skip
-    Positive -->|Yes| Calculate[Remaining = Capacity - Damage]
-    Calculate --> Percent[Health Percent = Clamp<br/>Remaining / Capacity x 100]
-    Percent --> Display[Render Health Percentage]
-    Positive -->|Invincible Enabled| Zero[Write 0.0 to Damage Field]
-    Zero --> Counter[Increment Invincible Correction Counter]
+    Base["Module Base<br/>igi.exe + 0x000000"] --> Before["Code and module data<br/>before 0x16E210"]
+    Before --> PlayerRoot["Base + 0x16E210<br/>Player root pointer"]
+    PlayerRoot --> Middle["Other module data<br/>between known roots"]
+    Middle --> MagazineRoot["Base + 0x671890<br/>Magazine root pointer"]
+    MagazineRoot --> After["Remaining module range"]
 
-    style Player fill:#EEF2FF,stroke:#A5B4FC,stroke-width:2px,color:#312E81
-    style Validate fill:#FEF3C7,stroke:#FCD34D,stroke-width:2px,color:#78350F
-    style Positive fill:#FEF3C7,stroke:#FCD34D,stroke-width:2px,color:#78350F
-    style Display fill:#ECFDF5,stroke:#6EE7B7,stroke-width:2px,color:#065F46
-    style Zero fill:#FDF2F8,stroke:#F9A8D4,stroke-width:2px,color:#831843
+    style Base fill:#252A33,stroke:#777F91,color:#F1F3F7
+    style Before fill:#2A2734,stroke:#8C849D,color:#F8F4FF
+    style PlayerRoot fill:#282E46,stroke:#9BA1D0,color:#F7F5FF
+    style Middle fill:#2A2734,stroke:#8C849D,color:#F8F4FF
+    style MagazineRoot fill:#3A2938,stroke:#B188AE,color:#FFF4FC
+    style After fill:#2A2734,stroke:#8C849D,color:#F8F4FF
 ```
-
-### Confirmed Fields
-
-```text
-player + 0x254  Float32  Accumulated damage
-player + 0x258  Float32  Damage capacity / lethal threshold
-```
-
-### Health Formula
-
-```text
-remaining_health = max(0, damage_capacity - accumulated_damage)
-health_percent = clamp(
-    remaining_health / damage_capacity * 100,
-    0,
-    100
-)
-```
-
-Invincible mode does not write an arbitrary health number. It maintains the confirmed accumulated-damage field at `0.0f` after validating both health fields.
 
 ---
 
-## Player Pointer Resolution
+## Player Pointer Chain
+
+Each **read pointer** step reads a 32-bit address from memory.
 
 ```mermaid
-%%{init: {'theme':'base', 'themeVariables': { 'primaryColor':'#EEF2FF','primaryTextColor':'#312E81','primaryBorderColor':'#A5B4FC','lineColor':'#818CF8','secondaryColor':'#ECFEFF','tertiaryColor':'#FEF3C7'}}}%%
+%%{init: {'theme':'base', 'themeVariables': {'background':'#0F1117','primaryColor':'#20263A','primaryTextColor':'#F6F3FF','primaryBorderColor':'#8E93B8','lineColor':'#B7B2CC','secondaryColor':'#1D2C35','secondaryTextColor':'#F3FAFC','secondaryBorderColor':'#7E9BAA','tertiaryColor':'#342633','tertiaryTextColor':'#FFF2FB','tertiaryBorderColor':'#A17F9D','fontFamily':'Segoe UI'}}}%%
 flowchart LR
-    Base[igi.exe Module Base] --> Root[+0x16E210]
-    Root --> P0[Read Pointer p0]
-    P0 --> S1[+0x08]
-    S1 --> P1[Read Pointer p1]
-    P1 --> S2[+0x7CC]
-    S2 --> P2[Read Pointer p2]
-    P2 --> S3[+0x14]
-    S3 --> Player[Read Final Player Pointer]
+    Base["igi.exe base"] --> Root["base + 0x16E210"]
+    Root -->|read pointer| P0["p0"]
+    P0 --> Add1["p0 + 0x08"]
+    Add1 -->|read pointer| P1["p1"]
+    P1 --> Add2["p1 + 0x7CC"]
+    Add2 -->|read pointer| P2["p2"]
+    P2 --> Add3["p2 + 0x14"]
+    Add3 -->|read pointer| Player["player object address"]
 
-    Root -. Validate .-> Guard1{32-bit User Range}
-    P1 -. Validate .-> Guard2{32-bit User Range}
-    P2 -. Validate .-> Guard3{32-bit User Range}
-    Player -. Validate .-> Guard4{32-bit User Range}
-
-    style Base fill:#EEF2FF,stroke:#A5B4FC,stroke-width:2px,color:#312E81
-    style Player fill:#ECFDF5,stroke:#6EE7B7,stroke-width:3px,color:#065F46
-    style Guard1 fill:#FEF3C7,stroke:#FCD34D,color:#78350F
-    style Guard2 fill:#FEF3C7,stroke:#FCD34D,color:#78350F
-    style Guard3 fill:#FEF3C7,stroke:#FCD34D,color:#78350F
-    style Guard4 fill:#FEF3C7,stroke:#FCD34D,color:#78350F
+    style Base fill:#252A33,stroke:#777F91,color:#F1F3F7
+    style Root fill:#282E46,stroke:#9BA1D0,color:#F7F5FF
+    style P0 fill:#24353E,stroke:#86A7B5,color:#F2FBFD
+    style P1 fill:#24353E,stroke:#86A7B5,color:#F2FBFD
+    style P2 fill:#24353E,stroke:#86A7B5,color:#F2FBFD
+    style Player fill:#294632,stroke:#8BC09A,color:#F1FFF5
 ```
-
-### Resolution Formula
 
 ```text
 p0     = read_u32(module_base + 0x16E210)
@@ -635,103 +312,206 @@ p2     = read_u32(p1 + 0x7CC)
 player = read_u32(p2 + 0x14)
 ```
 
-The module-relative root is stable for the supported executable layout. The final player object is dynamically allocated and may move after mission transitions, loading screens, or restart events.
+The final player address can change after a loading screen or mission change. The trainer resolves the chain again instead of keeping one old address.
 
 ---
 
-## Inventory Management
+## Linear Player Object Layout
+
+The following rectangle-like chain shows the known fields in increasing offset order inside the player object.
 
 ```mermaid
-%%{init: {'theme':'base', 'themeVariables': { 'primaryColor':'#FEF3C7','primaryTextColor':'#78350F','primaryBorderColor':'#FCD34D','lineColor':'#A5B4FC','secondaryColor':'#EEF2FF','tertiaryColor':'#ECFDF5'}}}%%
-flowchart TB
-    Player[Resolved Player] --> Count[Read Count at +0x340]
-    Count --> SafeCount{Count Between 0 and 64?}
-    SafeCount -->|No| Wait[Amber LED and Skip Cycle]
-    SafeCount -->|Yes| Walk[Walk Runtime Records]
-    Walk --> Formula[Record = Player + 0x344 + Index x 0x0C]
-    Formula --> ReadFields[Read ID, Current and Maximum]
-    ReadFields --> CurrentValid{Current Non-Negative?}
-    CurrentValid -->|No| Next[Skip Record]
-    CurrentValid -->|Yes| Target{Maximum Positive?}
-    Target -->|Yes| UseMax[Target = Record Maximum]
-    Target -->|No| UseSafe[Target = 100]
-    UseMax --> Bounds{Target Between 0 and 100000?}
-    UseSafe --> Bounds
-    Bounds -->|No| Next
-    Bounds -->|Yes| Changed{Current Differs?}
-    Changed -->|No| Next
-    Changed -->|Yes| Write[Write Current Field Only]
-    Write --> CountWrite[Increment Inventory Counter]
-    CountWrite --> Next
-    Next --> Walk
+%%{init: {'theme':'base', 'themeVariables': {'background':'#0F1117','primaryColor':'#20263A','primaryTextColor':'#F6F3FF','primaryBorderColor':'#8E93B8','lineColor':'#B7B2CC','secondaryColor':'#1D2C35','secondaryTextColor':'#F3FAFC','secondaryBorderColor':'#7E9BAA','tertiaryColor':'#342633','tertiaryTextColor':'#FFF2FB','tertiaryBorderColor':'#A17F9D','fontFamily':'Segoe UI'}}}%%
+flowchart LR
+    Start["Player + 0x000<br/>Object start"] --> UnknownA["Other player fields<br/>0x000 to 0x253"]
+    UnknownA --> Damage["+0x254 to +0x257<br/>Float32 damage"]
+    Damage --> Capacity["+0x258 to +0x25B<br/>Float32 capacity"]
+    Capacity --> UnknownB["Other player fields<br/>0x25C to 0x33F"]
+    UnknownB --> Count["+0x340 to +0x343<br/>Int32 item count"]
+    Count --> Records["+0x344<br/>First 12-byte item record"]
+    Records --> More["More records<br/>every +0x0C bytes"]
 
-    style Player fill:#EEF2FF,stroke:#A5B4FC,stroke-width:2px,color:#312E81
-    style SafeCount fill:#FEF3C7,stroke:#FCD34D,stroke-width:2px,color:#78350F
-    style Write fill:#ECFDF5,stroke:#6EE7B7,stroke-width:2px,color:#065F46
-    style Wait fill:#FDF2F8,stroke:#F9A8D4,stroke-width:2px,color:#831843
+    style Start fill:#252A33,stroke:#777F91,color:#F1F3F7
+    style UnknownA fill:#2A2734,stroke:#8C849D,color:#F8F4FF
+    style Damage fill:#3A2938,stroke:#B188AE,color:#FFF4FC
+    style Capacity fill:#3A3224,stroke:#B59D73,color:#FFF8E9
+    style UnknownB fill:#2A2734,stroke:#8C849D,color:#F8F4FF
+    style Count fill:#24353E,stroke:#86A7B5,color:#F2FBFD
+    style Records fill:#294632,stroke:#8BC09A,color:#F1FFF5
+    style More fill:#24382C,stroke:#84AF91,color:#F1FFF5
 ```
 
-### Runtime Record Structure
+---
 
-```cpp
-struct InventoryRecord {
-    std::int32_t id;       // +0x00, read-only
-    std::int32_t current;  // +0x04, bounded mutable field
-    std::int32_t maximum;  // +0x08, read-only
-};
+## Health Memory and Formula
+
+The damage and capacity values are adjacent 4-byte floating-point fields.
+
+```mermaid
+%%{init: {'theme':'base', 'themeVariables': {'background':'#0F1117','primaryColor':'#20263A','primaryTextColor':'#F6F3FF','primaryBorderColor':'#8E93B8','lineColor':'#B7B2CC','secondaryColor':'#1D2C35','secondaryTextColor':'#F3FAFC','secondaryBorderColor':'#7E9BAA','tertiaryColor':'#342633','tertiaryTextColor':'#FFF2FB','tertiaryBorderColor':'#A17F9D','fontFamily':'Segoe UI'}}}%%
+flowchart LR
+    Before["Player + 0x250<br/>Other field"] --> Damage["Player + 0x254<br/>Bytes 0x254 to 0x257<br/>Float32 accumulated damage"]
+    Damage --> Capacity["Player + 0x258<br/>Bytes 0x258 to 0x25B<br/>Float32 damage capacity"]
+    Capacity --> After["Player + 0x25C<br/>Next field"]
+
+    style Before fill:#2A2734,stroke:#8C849D,color:#F8F4FF
+    style Damage fill:#3A2938,stroke:#B188AE,color:#FFF4FC
+    style Capacity fill:#3A3224,stroke:#B59D73,color:#FFF8E9
+    style After fill:#2A2734,stroke:#8C849D,color:#F8F4FF
 ```
-
-### Inventory Formulas
 
 ```text
-count_address   = player + 0x340
-record_address  = player + 0x344 + index * 0x0C
-id_address      = record_address + 0x00
-current_address = record_address + 0x04
-maximum_address = record_address + 0x08
+Remaining Health = Capacity - Damage
+Health Percentage = Remaining Health / Capacity * 100
 ```
 
-### Inventory Safety Rules
+Example:
 
-- Reject record counts below `0` or above `64`
-- Never write the record ID
-- Never write the record maximum
-- Skip negative current values
-- Respect a positive maximum
-- Use `100` only for an unclamped or non-positive maximum
-- Reject targets above `100000`
-- Increment the counter only after a successful write
+```text
+Capacity = 100
+Damage   = 25
+Health   = 75%
+```
+
+When Invincible is enabled:
+
+```text
+Damage = 0
+Health = 100 - 0 = 100%
+```
+
+### Invincible Flow
+
+```mermaid
+%%{init: {'theme':'base', 'themeVariables': {'background':'#0F1117','primaryColor':'#20263A','primaryTextColor':'#F6F3FF','primaryBorderColor':'#8E93B8','lineColor':'#B7B2CC','secondaryColor':'#1D2C35','secondaryTextColor':'#F3FAFC','secondaryBorderColor':'#7E9BAA','tertiaryColor':'#342633','tertiaryTextColor':'#FFF2FB','tertiaryBorderColor':'#A17F9D','fontFamily':'Segoe UI'}}}%%
+flowchart TD
+    Resolve["Resolve player object"] --> Read["Read damage and capacity"]
+    Read --> Finite{"Are both values finite?"}
+    Finite -->|No| Skip["Skip this cycle"]
+    Finite -->|Yes| Positive{"Is capacity greater than zero?"}
+    Positive -->|No| Skip
+    Positive -->|Yes| Enabled{"Is Invincible enabled?"}
+    Enabled -->|No| Display["Display calculated health"]
+    Enabled -->|Yes| Needed{"Is damage non-zero?"}
+    Needed -->|No| Display
+    Needed -->|Yes| Write["Write 0.0 to Player + 0x254"]
+    Write --> Counter["Increase Invincible counter"]
+    Counter --> Display
+    Skip --> Retry["Try again next cycle"]
+    Display --> Retry
+
+    style Resolve fill:#20263A,stroke:#8E93B8,color:#F6F3FF
+    style Finite fill:#332C20,stroke:#AA946D,color:#FFF7E8
+    style Positive fill:#332C20,stroke:#AA946D,color:#FFF7E8
+    style Enabled fill:#342633,stroke:#A17F9D,color:#FFF2FB
+    style Write fill:#294632,stroke:#8BC09A,color:#F1FFF5
+    style Skip fill:#3A2938,stroke:#B188AE,color:#FFF4FC
+```
 
 ---
 
-## Magazine Management
+## Linear Inventory Layout
+
+The inventory starts with a 4-byte count, followed immediately by fixed 12-byte records.
 
 ```mermaid
-%%{init: {'theme':'base', 'themeVariables': { 'primaryColor':'#FDF2F8','primaryTextColor':'#831843','primaryBorderColor':'#F9A8D4','lineColor':'#818CF8','secondaryColor':'#EEF2FF','tertiaryColor':'#ECFDF5'}}}%%
+%%{init: {'theme':'base', 'themeVariables': {'background':'#0F1117','primaryColor':'#20263A','primaryTextColor':'#F6F3FF','primaryBorderColor':'#8E93B8','lineColor':'#B7B2CC','secondaryColor':'#1D2C35','secondaryTextColor':'#F3FAFC','secondaryBorderColor':'#7E9BAA','tertiaryColor':'#342633','tertiaryTextColor':'#FFF2FB','tertiaryBorderColor':'#A17F9D','fontFamily':'Segoe UI'}}}%%
 flowchart LR
-    Base[igi.exe Module Base] --> Root[+0x671890]
-    Root --> M0[Read m0]
-    M0 --> Step1[+0x00]
-    Step1 --> M1[Read m1]
-    M1 --> Step2[+0x4C4]
-    Step2 --> M2[Read m2]
-    M2 --> Final[+0x144]
-    Final --> Current[Read Current Magazine]
-    Current --> Plausible{Value Between 0 and 500?}
-    Plausible -->|No| Transition[Amber LED: Skip Transition]
-    Plausible -->|Yes| Target{Already 99?}
-    Target -->|Yes| Active[Green LED: No Write Needed]
-    Target -->|No| Write[Write Magazine = 99]
-    Write --> Counter[Increment Refill Counter]
+    Count["Player + 0x340 to +0x343<br/>Int32 record count"] --> R0["Record 0<br/>+0x344 to +0x34F"]
+    R0 --> R1["Record 1<br/>+0x350 to +0x35B"]
+    R1 --> R2["Record 2<br/>+0x35C to +0x367"]
+    R2 --> RN["More records<br/>each +0x0C bytes"]
 
-    style Base fill:#EEF2FF,stroke:#A5B4FC,stroke-width:2px,color:#312E81
-    style Plausible fill:#FEF3C7,stroke:#FCD34D,stroke-width:2px,color:#78350F
-    style Transition fill:#FDF2F8,stroke:#F9A8D4,stroke-width:2px,color:#831843
-    style Active fill:#ECFDF5,stroke:#6EE7B7,stroke-width:2px,color:#065F46
-    style Write fill:#ECFEFF,stroke:#67E8F9,stroke-width:2px,color:#164E63
+    style Count fill:#3A3224,stroke:#B59D73,color:#FFF8E9
+    style R0 fill:#294632,stroke:#8BC09A,color:#F1FFF5
+    style R1 fill:#24353E,stroke:#86A7B5,color:#F2FBFD
+    style R2 fill:#282E46,stroke:#9BA1D0,color:#F7F5FF
+    style RN fill:#2A2734,stroke:#8C849D,color:#F8F4FF
 ```
 
-### Magazine Chain
+### One Inventory Record
+
+```mermaid
+%%{init: {'theme':'base', 'themeVariables': {'background':'#0F1117','primaryColor':'#20263A','primaryTextColor':'#F6F3FF','primaryBorderColor':'#8E93B8','lineColor':'#B7B2CC','secondaryColor':'#1D2C35','secondaryTextColor':'#F3FAFC','secondaryBorderColor':'#7E9BAA','tertiaryColor':'#342633','tertiaryTextColor':'#FFF2FB','tertiaryBorderColor':'#A17F9D','fontFamily':'Segoe UI'}}}%%
+flowchart LR
+    ID["Record + 0x00 to +0x03<br/>Int32 ID<br/>Read only"] --> Current["Record + 0x04 to +0x07<br/>Int32 current quantity<br/>Trainer may update"]
+    Current --> Maximum["Record + 0x08 to +0x0B<br/>Int32 maximum quantity<br/>Read only"]
+
+    style ID fill:#282E46,stroke:#9BA1D0,color:#F7F5FF
+    style Current fill:#294632,stroke:#8BC09A,color:#F1FFF5
+    style Maximum fill:#3A3224,stroke:#B59D73,color:#FFF8E9
+```
+
+```text
+Record Address = Player + 0x344 + Index * 0x0C
+```
+
+Examples:
+
+```text
+Record 0 = Player + 0x344
+Record 1 = Player + 0x350
+Record 2 = Player + 0x35C
+```
+
+### Inventory Auto-Max Flow
+
+```mermaid
+%%{init: {'theme':'base', 'themeVariables': {'background':'#0F1117','primaryColor':'#20263A','primaryTextColor':'#F6F3FF','primaryBorderColor':'#8E93B8','lineColor':'#B7B2CC','secondaryColor':'#1D2C35','secondaryTextColor':'#F3FAFC','secondaryBorderColor':'#7E9BAA','tertiaryColor':'#342633','tertiaryTextColor':'#FFF2FB','tertiaryBorderColor':'#A17F9D','fontFamily':'Segoe UI'}}}%%
+flowchart TD
+    ReadCount["Read count at Player + 0x340"] --> Safe{"Count between 0 and 64?"}
+    Safe -->|No| Skip["Skip this cycle"]
+    Safe -->|Yes| Loop["Walk each 12-byte record"]
+    Loop --> ReadFields["Read ID, current, maximum"]
+    ReadFields --> CurrentValid{"Is current non-negative?"}
+    CurrentValid -->|No| Next["Skip this record"]
+    CurrentValid -->|Yes| HasMax{"Is maximum positive?"}
+    HasMax -->|Yes| TargetMax["Target = maximum"]
+    HasMax -->|No| TargetSafe["Target = 100"]
+    TargetMax --> Bounds{"Target inside safe bounds?"}
+    TargetSafe --> Bounds
+    Bounds -->|No| Next
+    Bounds -->|Yes| Different{"Current differs from target?"}
+    Different -->|No| Next
+    Different -->|Yes| Write["Write Record + 0x04 only"]
+    Write --> Counter["Increase inventory counter"]
+    Counter --> Next
+    Next --> Loop
+
+    style ReadCount fill:#20263A,stroke:#8E93B8,color:#F6F3FF
+    style Safe fill:#332C20,stroke:#AA946D,color:#FFF7E8
+    style HasMax fill:#332C20,stroke:#AA946D,color:#FFF7E8
+    style Write fill:#294632,stroke:#8BC09A,color:#F1FFF5
+    style Skip fill:#3A2938,stroke:#B188AE,color:#FFF4FC
+```
+
+The trainer never writes the item ID or maximum field.
+
+---
+
+## Magazine Pointer Chain
+
+The active magazine is separate from the player inventory records.
+
+```mermaid
+%%{init: {'theme':'base', 'themeVariables': {'background':'#0F1117','primaryColor':'#20263A','primaryTextColor':'#F6F3FF','primaryBorderColor':'#8E93B8','lineColor':'#B7B2CC','secondaryColor':'#1D2C35','secondaryTextColor':'#F3FAFC','secondaryBorderColor':'#7E9BAA','tertiaryColor':'#342633','tertiaryTextColor':'#FFF2FB','tertiaryBorderColor':'#A17F9D','fontFamily':'Segoe UI'}}}%%
+flowchart LR
+    Base["igi.exe base"] --> Root["base + 0x671890"]
+    Root -->|read pointer| M0["m0"]
+    M0 --> Add1["m0 + 0x00"]
+    Add1 -->|read pointer| M1["m1"]
+    M1 --> Add2["m1 + 0x4C4"]
+    Add2 -->|read pointer| M2["m2"]
+    M2 --> Final["m2 + 0x144"]
+    Final --> Value["Int32 active magazine value"]
+
+    style Base fill:#252A33,stroke:#777F91,color:#F1F3F7
+    style Root fill:#3A2938,stroke:#B188AE,color:#FFF4FC
+    style M0 fill:#24353E,stroke:#86A7B5,color:#F2FBFD
+    style M1 fill:#24353E,stroke:#86A7B5,color:#F2FBFD
+    style M2 fill:#24353E,stroke:#86A7B5,color:#F2FBFD
+    style Value fill:#294632,stroke:#8BC09A,color:#F1FFF5
+```
 
 ```text
 m0 = read_u32(module_base + 0x671890)
@@ -740,550 +520,282 @@ m2 = read_u32(m1 + 0x4C4)
 magazine_address = m2 + 0x144
 ```
 
-Magazine state is resolved independently from inventory reserve quantities. Transitional values, including weapon-switch states, are skipped without disabling the feature.
+### Linear Magazine Object View
+
+```mermaid
+%%{init: {'theme':'base', 'themeVariables': {'background':'#0F1117','primaryColor':'#20263A','primaryTextColor':'#F6F3FF','primaryBorderColor':'#8E93B8','lineColor':'#B7B2CC','secondaryColor':'#1D2C35','secondaryTextColor':'#F3FAFC','secondaryBorderColor':'#7E9BAA','tertiaryColor':'#342633','tertiaryTextColor':'#FFF2FB','tertiaryBorderColor':'#A17F9D','fontFamily':'Segoe UI'}}}%%
+flowchart LR
+    Start["m2 + 0x000<br/>Object start"] --> Unknown["Other object fields<br/>0x000 to 0x143"]
+    Unknown --> Magazine["m2 + 0x144 to +0x147<br/>Int32 magazine count"]
+    Magazine --> After["m2 + 0x148<br/>Next object field"]
+
+    style Start fill:#252A33,stroke:#777F91,color:#F1F3F7
+    style Unknown fill:#2A2734,stroke:#8C849D,color:#F8F4FF
+    style Magazine fill:#294632,stroke:#8BC09A,color:#F1FFF5
+    style After fill:#2A2734,stroke:#8C849D,color:#F8F4FF
+```
+
+### Magazine Auto-Fill Flow
+
+```mermaid
+%%{init: {'theme':'base', 'themeVariables': {'background':'#0F1117','primaryColor':'#20263A','primaryTextColor':'#F6F3FF','primaryBorderColor':'#8E93B8','lineColor':'#B7B2CC','secondaryColor':'#1D2C35','secondaryTextColor':'#F3FAFC','secondaryBorderColor':'#7E9BAA','tertiaryColor':'#342633','tertiaryTextColor':'#FFF2FB','tertiaryBorderColor':'#A17F9D','fontFamily':'Segoe UI'}}}%%
+flowchart TD
+    Resolve["Resolve magazine chain"] --> Read["Read Int32 magazine value"]
+    Read --> Valid{"Value between 0 and 500?"}
+    Valid -->|No| Transition["Possible weapon switch<br/>skip this cycle"]
+    Valid -->|Yes| Full{"Already 99?"}
+    Full -->|Yes| NoWrite["No write needed"]
+    Full -->|No| Write["Write 99"]
+    Write --> Counter["Increase magazine counter"]
+    Transition --> Retry["Try again next cycle"]
+    NoWrite --> Retry
+    Counter --> Retry
+
+    style Resolve fill:#20263A,stroke:#8E93B8,color:#F6F3FF
+    style Valid fill:#332C20,stroke:#AA946D,color:#FFF7E8
+    style Transition fill:#3A2938,stroke:#B188AE,color:#FFF4FC
+    style Write fill:#294632,stroke:#8BC09A,color:#F1FFF5
+```
+
+A temporary value such as `-1` during a weapon switch is ignored for that cycle. The feature remains enabled and tries again.
 
 ---
 
-## Repository Structure
+## Real-Time Worker Loop
+
+The worker checks the game every **25 milliseconds**, which is approximately **40 cycles per second**.
+
+```mermaid
+%%{init: {'theme':'base', 'themeVariables': {'background':'#0F1117','primaryColor':'#20263A','primaryTextColor':'#F6F3FF','primaryBorderColor':'#8E93B8','lineColor':'#B7B2CC','secondaryColor':'#1D2C35','secondaryTextColor':'#F3FAFC','secondaryBorderColor':'#7E9BAA','tertiaryColor':'#342633','tertiaryTextColor':'#FFF2FB','tertiaryBorderColor':'#A17F9D','fontFamily':'Segoe UI'}}}%%
+flowchart TD
+    Tick["Begin 25 ms cycle"] --> Hotkeys["Read F1, F2, F3, F12"]
+    Hotkeys --> Attached{"Game process attached?"}
+    Attached -->|No| Search["Search for igi.exe"]
+    Search --> Sleep
+    Attached -->|Yes| Resolve["Resolve player object"]
+    Resolve --> PlayerValid{"Player valid?"}
+    PlayerValid -->|No| Waiting["Keep selected features<br/>wait for mission"]
+    PlayerValid -->|Yes| Health["Read health state"]
+    Health --> F1{"Invincible enabled?"}
+    F1 -->|Yes| ApplyHealth["Validate and correct damage"]
+    F1 -->|No| F2
+    ApplyHealth --> F2{"Magazine enabled?"}
+    F2 -->|Yes| ApplyMag["Resolve and correct magazine"]
+    F2 -->|No| F3
+    ApplyMag --> F3{"Inventory enabled?"}
+    F3 -->|Yes| ApplyInv["Validate and update records"]
+    F3 -->|No| Snapshot
+    ApplyInv --> Snapshot["Update UI snapshot and counters"]
+    Waiting --> Snapshot
+    Snapshot --> Sleep["Sleep until next cycle"]
+    Sleep --> Tick
+
+    style Tick fill:#20263A,stroke:#8E93B8,color:#F6F3FF
+    style Waiting fill:#332C20,stroke:#AA946D,color:#FFF7E8
+    style ApplyHealth fill:#294632,stroke:#8BC09A,color:#F1FFF5
+    style ApplyMag fill:#294632,stroke:#8BC09A,color:#F1FFF5
+    style ApplyInv fill:#294632,stroke:#8BC09A,color:#F1FFF5
+```
+
+If a read fails during a loading screen or transition, the trainer skips that cycle. The selected feature is not automatically turned off.
+
+---
+
+## Application Architecture
+
+```mermaid
+%%{init: {'theme':'base', 'themeVariables': {'background':'#0F1117','primaryColor':'#20263A','primaryTextColor':'#F6F3FF','primaryBorderColor':'#8E93B8','lineColor':'#B7B2CC','secondaryColor':'#1D2C35','secondaryTextColor':'#F3FAFC','secondaryBorderColor':'#7E9BAA','tertiaryColor':'#342633','tertiaryTextColor':'#FFF2FB','tertiaryBorderColor':'#A17F9D','fontFamily':'Segoe UI'}}}%%
+flowchart LR
+    subgraph UI["UI Thread"]
+        Window["Win32 window"]
+        Draw["Direct2D drawing"]
+        Text["DirectWrite text"]
+        Input["Mouse and window messages"]
+    end
+
+    subgraph Shared["Shared Snapshot"]
+        State["Process state<br/>health<br/>feature LEDs<br/>counters"]
+        Lock["Mutex protection"]
+    end
+
+    subgraph Worker["Worker Thread"]
+        Attach["Process attachment"]
+        Resolve["Pointer resolution"]
+        Read["Typed memory reads"]
+        Validate["Value validation"]
+        Write["Bounded memory writes"]
+    end
+
+    Window --> Draw
+    Window --> Text
+    Input --> State
+    Worker --> State
+    State --> Lock
+    Lock --> Draw
+    Attach --> Resolve --> Read --> Validate --> Write
+
+    style UI fill:#20263A,stroke:#8E93B8,color:#F6F3FF
+    style Shared fill:#332C20,stroke:#AA946D,color:#FFF7E8
+    style Worker fill:#203127,stroke:#79A68A,color:#F0FFF5
+```
+
+### Source Layout
 
 ```text
-IGI-Offline-Trainer/
+src/App.cpp             Window, drawing, controls, status display
+src/GameTrainer.cpp     Worker loop and feature policies
+src/ProcessMemory.cpp   Process discovery and typed memory access
+src/main.cpp            Windows entry point
+include/Offsets.hpp     Known offsets, targets, and limits
+```
+
+---
+
+## Validation Before Every Write
+
+```mermaid
+%%{init: {'theme':'base', 'themeVariables': {'background':'#0F1117','primaryColor':'#20263A','primaryTextColor':'#F6F3FF','primaryBorderColor':'#8E93B8','lineColor':'#B7B2CC','secondaryColor':'#1D2C35','secondaryTextColor':'#F3FAFC','secondaryBorderColor':'#7E9BAA','tertiaryColor':'#342633','tertiaryTextColor':'#FFF2FB','tertiaryBorderColor':'#A17F9D','fontFamily':'Segoe UI'}}}%%
+flowchart LR
+    Read["Read runtime value"] --> Pointer{"Expected pointer range?"}
+    Pointer -->|No| Skip["Skip this cycle"]
+    Pointer -->|Yes| Type{"Correct value type?"}
+    Type -->|No| Skip
+    Type -->|Yes| Bounds{"Inside safe bounds?"}
+    Bounds -->|No| Skip
+    Bounds -->|Yes| Field{"Confirmed mutable field?"}
+    Field -->|No| Skip
+    Field -->|Yes| Write["Perform bounded write"]
+    Write --> Next["Continue next cycle"]
+    Skip --> Next
+
+    style Read fill:#20263A,stroke:#8E93B8,color:#F6F3FF
+    style Pointer fill:#332C20,stroke:#AA946D,color:#FFF7E8
+    style Type fill:#332C20,stroke:#AA946D,color:#FFF7E8
+    style Bounds fill:#332C20,stroke:#AA946D,color:#FFF7E8
+    style Field fill:#3A2938,stroke:#B188AE,color:#FFF4FC
+    style Write fill:#294632,stroke:#8BC09A,color:#F1FFF5
+```
+
+### Fields the Trainer May Change
+
+```text
+Player + 0x254       Accumulated damage
+Record + 0x04        Inventory current quantity
+Chain result + 0x144 Active magazine count
+```
+
+### Fields the Trainer Does Not Change
+
+```text
+Inventory item IDs
+Inventory maximum values
+Game executable code
+Game files on disk
+Windows system files
+Other running processes
+```
+
+---
+
+## Build from Source
+
+### Requirements
+
+- Windows 10 or Windows 11
+- Visual Studio Community 2026
+- Desktop development with C++
+- MSVC x86 build tools
+- Windows SDK
+- CMake
+
+### Build Command
+
+```powershell
+cmd.exe /d /s /c 'call "C:\Program Files\Microsoft Visual Studio\18\Community\VC\Auxiliary\Build\vcvarsall.bat" x86 && cd /d "PATH\TO\Project-IGI-Offline-Trainer" && if exist build rmdir /s /q build && cmake -S . -B build -G "NMake Makefiles" -DCMAKE_BUILD_TYPE=Release && cmake --build build'
+```
+
+Expected file:
+
+```text
+build\bin\IGI-Offline-Trainer.exe
+```
+
+---
+
+## Repository Layout
+
+```text
+Project-IGI-Offline-Trainer/
 ├── .github/
-│   ├── ISSUE_TEMPLATE/
-│   │   ├── bug_report.yml
-│   │   └── feature_request.yml
-│   ├── workflows/
-│   │   ├── build.yml
-│   │   └── release.yml
-│   └── pull_request_template.md
 ├── assets/
 │   ├── gifs/
-│   │   ├── README.md
-│   │   ├── border-crossing-demo.gif
-│   │   ├── trainer-overview.gif
-│   │   ├── invincible-demo.gif
-│   │   ├── magazine-demo.gif
-│   │   └── inventory-demo.gif
 │   └── images/
-│       ├── README.md
-│       ├── border-crossing-01.JPG
-│       ├── border-crossing-02.JPG
-│       ├── border-crossing-03.JPG
-│       ├── border-crossing-hero.JPG
-│       ├── hero-1600x900.png
-│       ├── ui-preview-1200x800.png
-│       └── social-preview-1280x640.png
 ├── docs/
-│   ├── ARCHITECTURE.md
-│   └── RELEASE.md
 ├── include/
-│   ├── App.hpp
-│   ├── GameTrainer.hpp
-│   ├── Offsets.hpp
-│   └── ProcessMemory.hpp
 ├── resources/
-│   └── app.rc
 ├── src/
-│   ├── App.cpp
-│   ├── GameTrainer.cpp
-│   ├── ProcessMemory.cpp
-│   └── main.cpp
-├── .gitattributes
-├── .gitignore
-├── CHANGELOG.md
 ├── CMakeLists.txt
-├── CMakePresets.json
-├── CONTRIBUTING.md
-├── LEGAL.md
+├── BUILD.md
 ├── LICENSE
+├── LEGAL.md
 ├── README.md
-├── SECURITY.md
-└── THIRD_PARTY_NOTICES.md
+└── SECURITY.md
 ```
 
 ---
 
-## Media and Visual Assets
+## Compatibility
 
-```mermaid
-%%{init: {'theme':'base', 'themeVariables': { 'primaryColor':'#EEF2FF','primaryTextColor':'#312E81','primaryBorderColor':'#A5B4FC','lineColor':'#A5B4FC','secondaryColor':'#ECFEFF','tertiaryColor':'#FDF2F8'}}}%%
-graph TD
-    Source[Original Source Artwork] --> Hero[Hero Image<br/>1600 x 900]
-    Source --> Preview[UI Preview<br/>1200 x 800]
-    Source --> Social[GitHub Social Preview<br/>1280 x 640]
-    Source --> Icon[Icon Source<br/>1024 x 1024]
-    Recording[Recorded Offline Demonstration] --> Frames[PNG Frame Sequence]
-    Frames --> GIF[Optimized Demo GIF<br/>960 x 540]
+### Supported
 
-    style Source fill:#EEF2FF,stroke:#A5B4FC,stroke-width:2px,color:#312E81
-    style Recording fill:#FDF2F8,stroke:#F9A8D4,stroke-width:2px,color:#831843
-    style GIF fill:#ECFDF5,stroke:#6EE7B7,stroke-width:2px,color:#065F46
-```
+- Windows 10 or Windows 11
+- 64-bit Windows host
+- Compatible original 32-bit Project I.G.I. executable
+- Offline single-player missions
 
-### Recommended File Sizes
+### Not Supported
 
-- Hero image: `1600 x 900`
-- UI screenshot: `1200 x 800`
-- Social preview: `1280 x 640`
-- Application icon source: `1024 x 1024`
-- Border Crossing screenshots: `1600 x 900` (or your native capture resolution)
-- Demo GIF: `960 x 540`, 15 to 20 FPS
+- Online or competitive games
+- Anti-cheat systems
+- Other games
+- Other Project I.G.I. titles
+- Executables with a different memory layout
 
-### ImageMagick Commands
-
-Hero image:
-
-```powershell
-magick input.png -resize 1600x900^ -gravity center -extent 1600x900 assets/images/hero-1600x900.png
-```
-
-GitHub social preview:
-
-```powershell
-magick input.png -resize 1280x640^ -gravity center -extent 1280x640 assets/images/social-preview-1280x640.png
-```
-
-Windows icon:
-
-```powershell
-magick input.png -define icon:auto-resize=256,128,64,48,32,16 assets/app.ico
-```
-
-GIF from PNG frames:
-
-```powershell
-magick -delay 5 -loop 0 frames/frame-*.png -resize 960x540 -layers Optimize assets/gifs/trainer-demo.gif
-```
-
-Use only original artwork, original screenshots, or media that you have permission to publish. Do not include extracted game textures, logos, models, audio, maps, or other proprietary assets.
+The memory offsets are version-specific. A different executable can move the module roots, pointer steps, player fields, inventory table, or magazine field.
 
 ---
 
-## GitHub Actions and Release Process
+## Project Scope
 
-```mermaid
-%%{init: {'theme':'base', 'themeVariables': { 'primaryColor':'#ECFEFF','primaryTextColor':'#164E63','primaryBorderColor':'#67E8F9','lineColor':'#818CF8','secondaryColor':'#EEF2FF','tertiaryColor':'#ECFDF5'}}}%%
-sequenceDiagram
-    autonumber
-    participant Developer
-    participant Git as Git Repository
-    participant Actions as GitHub Actions
-    participant Runner as Windows Runner
-    participant Release as GitHub Release
+- Offline single-player use only
+- Users must supply a lawfully obtained compatible game copy
+- No game executable, DLL, map, model, texture, audio, font, or proprietary source code is included
+- The project is unofficial and is not affiliated with or endorsed by the game's rights holders
 
-    Developer->>Git: Commit release changes
-    Developer->>Git: Push version tag v1.0.0
-    Git->>Actions: Trigger release workflow
-    Actions->>Runner: Start Windows build environment
-    Runner->>Runner: Configure Win32 CMake project
-    Runner->>Runner: Build Release executable
-    Runner->>Runner: Package executable and documentation
-    Runner->>Runner: Generate SHA-256 checksum
-    Runner-->>Actions: Upload release artifacts
-    Actions->>Release: Publish generated release notes
-    Actions->>Release: Attach ZIP and checksum
-    Release-->>Developer: Latest release available
-```
-
-### Create the First Release
-
-```powershell
-git add .
-git commit -m "Release IGI Offline Trainer v1.0.0"
-git push origin main
-
-git tag v1.0.0
-git push origin v1.0.0
-```
-
-The release workflow creates:
-
-```text
-IGI-Offline-Trainer-Windows-x86-v1.0.0.zip
-checksums-sha256.txt
-```
-
-### Direct Release Link
-
-[Download the Latest Compiled Release](../../releases/latest)
-
-The direct link begins working after the repository has at least one published GitHub release.
+See [LEGAL.md](LEGAL.md), [LICENSE](LICENSE), and [SECURITY.md](SECURITY.md) for the full project terms.
 
 ---
 
-## Compatibility and Validation
+## Project Status
 
-```mermaid
-%%{init: {'theme':'base', 'themeVariables': { 'primaryColor':'#FEF3C7','primaryTextColor':'#78350F','primaryBorderColor':'#FCD34D','lineColor':'#A5B4FC','secondaryColor':'#EEF2FF','tertiaryColor':'#ECFDF5'}}}%%
-flowchart TB
-    Launch[Trainer Launch] --> Process{igi.exe Found?}
-    Process -->|No| Wait[Wait Without Writing]
-    Process -->|Yes| Module{Module Base Found?}
-    Module -->|No| Wait
-    Module -->|Yes| Player{Player Chain Valid?}
-    Player -->|No| WaitMission[Wait for Active Mission]
-    Player -->|Yes| Health{Health Fields Valid?}
-    Health -->|No| SkipHealth[Skip Health Cycle]
-    Health -->|Yes| Inventory{Inventory Count Safe?}
-    Inventory -->|No| SkipInventory[Skip Inventory Cycle]
-    Inventory -->|Yes| Magazine{Magazine Value Plausible?}
-    Magazine -->|No| SkipMagazine[Skip Magazine Cycle]
-    Magazine -->|Yes| Ready[Validated Runtime State]
-    Ready --> Write[Apply Enabled Policies Only]
+This is a learning project and is not under active maintenance. The source code is available for review, modification, and independent compilation under the repository license.
 
-    style Process fill:#FEF3C7,stroke:#FCD34D,stroke-width:2px,color:#78350F
-    style Module fill:#FEF3C7,stroke:#FCD34D,stroke-width:2px,color:#78350F
-    style Player fill:#FEF3C7,stroke:#FCD34D,stroke-width:2px,color:#78350F
-    style Ready fill:#ECFDF5,stroke:#6EE7B7,stroke-width:3px,color:#065F46
-    style Write fill:#EEF2FF,stroke:#A5B4FC,stroke-width:2px,color:#312E81
-```
-
-### Supported Build Statement
-
-This repository is configured for the specific 32-bit Project I.G.I. executable layout used by the author during development and Python v2 testing. The C++ implementation preserves the same offsets, field meanings, policy behavior, validation limits, and transition handling.
-
-The C++ version was statically reviewed in the repository-generation environment. The game itself was not available in that environment, so runtime validation must be completed by the author against the already tested local game build before publishing the first compiled release.
-
-Other releases, patches, storefront editions, or modified executables may use different memory layouts and are not guaranteed to work.
-
----
-
-## Troubleshooting
-
-### Game Status Remains Amber
-
-Possible causes:
-
-- `igi.exe` is not running
-- The game is at the menu instead of inside a mission
-- The player object has not been initialized
-- The executable layout differs from the supported build
-- Windows denied access to the target process
-
-Recommended response:
-
-1. Start a lawful offline mission.
-2. Launch the trainer after the mission loads.
-3. Confirm both applications run under the same Windows user context.
-4. Verify that the game executable is named `igi.exe`.
-5. Confirm that the local executable is the same build used during offset validation.
-
-### LED Changes to Amber During Weapon Switching
-
-This is expected behavior. The magazine chain may temporarily resolve to an invalid or transitional value. The trainer skips that polling cycle and keeps the policy enabled.
-
-### Inventory Counter Does Not Increase
-
-The counter increases only when a valid record actually requires correction. No increment occurs when every current value already equals its target.
-
-### Health Shows Zero or Does Not Update
-
-The application rejects non-finite damage values, non-finite capacity values, and capacity less than or equal to zero. Start or resume a mission and allow the player object to initialize.
-
-### Resource Compiler Not Found
-
-Open **Developer PowerShell for Visual Studio 2026** rather than ordinary PowerShell. Verify:
-
-```powershell
-where.exe rc
-```
-
-If required for the current session, add the installed x86 Windows SDK tools:
-
-```powershell
-$env:Path = "C:\Program Files (x86)\Windows Kits\10\bin\10.0.26100.0\x86;$env:Path"
-```
-
-### CMake Generator Not Found
-
-List installed generators:
-
-```powershell
-cmake --help | Select-String "Visual Studio"
-```
-
-For Visual Studio Community 2026, use the exact generator name printed by CMake, expected as:
-
-```text
-Visual Studio 18 2026
-```
-
----
-
-## Security and Privacy Architecture
-
-```mermaid
-%%{init: {'theme':'base', 'themeVariables': { 'primaryColor':'#ECFDF5','primaryTextColor':'#065F46','primaryBorderColor':'#6EE7B7','lineColor':'#A5B4FC','secondaryColor':'#EEF2FF','tertiaryColor':'#FEF3C7'}}}%%
-graph LR
-    subgraph Boundaries[Project Boundaries]
-        Offline[Offline Single-Player Only]
-        Local[Local Process Only]
-        NoInjection[No DLL Injection]
-        NoHooks[No Runtime Hooks]
-        NoNetwork[No Network Features]
-    end
-
-    subgraph Validation[Validation Controls]
-        Pointer[Pointer Range Validation]
-        Float[Finite Float Validation]
-        Count[Inventory Count Limit]
-        Bounds[Write Target Bounds]
-        Fields[Confirmed Fields Only]
-    end
-
-    subgraph Privacy[Privacy Controls]
-        NoTelemetry[No Telemetry]
-        NoAccount[No Account]
-        NoRemoteLog[No Remote Logging]
-        SessionOnly[Session-Only Counters]
-        NoSecrets[No Credentials Required]
-    end
-
-    Boundaries --> Validation
-    Validation --> Privacy
-
-    style Boundaries fill:#EEF2FF,stroke:#A5B4FC,stroke-width:2px,color:#312E81
-    style Validation fill:#FEF3C7,stroke:#FCD34D,stroke-width:2px,color:#78350F
-    style Privacy fill:#ECFDF5,stroke:#6EE7B7,stroke-width:2px,color:#065F46
-```
-
-### Security Rules
-
-- No support for online games or competitive play
-- No anti-cheat bypass
-- No stealth or detection-evasion functionality
-- No authentication or entitlement bypass
-- No DRM circumvention
-- No credential, cookie, token, or session access
-- No kernel drivers
-- No process injection
-- No modification of unrelated processes
-- No proprietary game content in source or releases
-
-### Repository Hygiene
-
-Never commit:
-
-```text
-*.pfx
-*.p12
-*.key
-*.pem
-.env
-igi.exe
-Game DLL files
-Private logs
-Personal absolute paths
-Authentication data
-Signing passwords
-Crash dumps containing identifiers
-```
-
----
-
-## Support and Maintenance
-
-```mermaid
-%%{init: {'theme':'base', 'themeVariables': { 'primaryColor':'#FEF3C7','primaryTextColor':'#78350F','primaryBorderColor':'#FCD34D','lineColor':'#FCD34D','secondaryColor':'#ECFEFF','tertiaryColor':'#FDF2F8'}}}%%
-mindmap
-  root((IGI Trainer Support))
-    Build Support
-      Visual Studio 2026
-      CMake Configuration
-      Win32 Target
-      Windows SDK
-    Runtime Support
-      Process Detection
-      Mission State
-      Pointer Validation
-      Transition Handling
-    Release Support
-      GitHub Actions
-      Portable ZIP
-      SHA-256 Checksum
-      Release Notes
-    Documentation
-      Architecture
-      Legal Notice
-      Security Policy
-      Contribution Guide
-    Media
-      Original Screenshots
-      Demonstration GIFs
-      Social Preview
-      Application Icon
-```
-
-### Bug Reports
-
-A useful public bug report should include:
-
-- Trainer release version
-- Windows version
-- Build type, such as Win32 Release
-- Visual Studio and CMake version if reporting a build issue
-- Whether `igi.exe` was detected
-- Whether an offline mission was active
-- LED color and affected feature
-- Reproduction steps
-- Sanitized error information
-
-Do not upload game executables, proprietary assets, private paths, tokens, certificates, or personal information.
-
----
-
-## Professional Standards
-
-```mermaid
-%%{init: {'theme':'base', 'themeVariables': { 'primaryColor':'#EEF2FF','primaryTextColor':'#312E81','primaryBorderColor':'#A5B4FC','lineColor':'#818CF8','secondaryColor':'#ECFDF5','tertiaryColor':'#FDF2F8'}}}%%
-graph LR
-    subgraph Standards[Engineering Standards]
-        Minimal[Minimal Interface]
-        Native[Native Windows Rendering]
-        Separation[UI and Worker Separation]
-        Validation[Fail-Closed Validation]
-        Documentation[Transparent Documentation]
-    end
-
-    subgraph Outcomes[Project Outcomes]
-        Responsive[Responsive Interface]
-        Focused[Focused User Experience]
-        Safe[Bounded Runtime Behavior]
-        Maintainable[Centralized Offsets]
-        Auditable[Readable Open Source]
-    end
-
-    Minimal --> Focused
-    Native --> Responsive
-    Separation --> Responsive
-    Validation --> Safe
-    Documentation --> Auditable
-    Documentation --> Maintainable
-
-    style Standards fill:#EEF2FF,stroke:#A5B4FC,stroke-width:2px,color:#312E81
-    style Outcomes fill:#ECFDF5,stroke:#6EE7B7,stroke-width:2px,color:#065F46
-```
-
-### Engineering Principles
-
-- Minimal UI instead of decorative complexity
-- Centralized offsets instead of scattered constants
-- Typed memory access instead of raw unstructured buffers
-- Persistent policies instead of one-shot toggles
-- Transition awareness instead of permanent feature shutdown
-- Session counters instead of noisy console logging
-- Explicit offline scope instead of ambiguous positioning
-- Honest compatibility statements instead of universal support claims
-
----
-
-## Notice of Cooperation & Take-Down Policy
-
-I deeply respect the intellectual property rights of game developers and publishers. Please note that this is my very first reverse engineering project made public, and it was created entirely as a personal learning experiment.
-
-If you are an **official copyright holder, authorized legal representative, or publisher** associated with *Project I.G.I.* or related intellectual property and believe this repository conflicts with your intellectual property guidelines:
-
-- **Preferred Contact Method:** Please open an **Issue** or a **Pull Request** directly here on GitHub. This repository is actively monitored.
-- **Verification Requirement:** To prevent fraudulent requests or trolling, a request for modification or removal should include reasonable official verification showing authority to act for the relevant rights holder. Sensitive evidence should not be posted publicly. Request a suitable private contact channel where necessary.
-- **Commitment to Compliance:** A verified request will be reviewed promptly and in good faith. Appropriate modification, content removal, release removal, or repository take-down action will be taken when required.
-
-This cooperation policy does not limit any legal rights or formal notice mechanisms available to a rights holder, publisher, platform, or authorized representative.
-
----
-
-## Legal and Intellectual Property
-
-```mermaid
-%%{init: {'theme':'base', 'themeVariables': { 'primaryColor':'#FDF2F8','primaryTextColor':'#831843','primaryBorderColor':'#F9A8D4','lineColor':'#A5B4FC','secondaryColor':'#EEF2FF','tertiaryColor':'#ECFDF5'}}}%%
-flowchart LR
-    Project[IGI Offline Trainer Repository] --> Includes[Includes]
-    Project --> Excludes[Does Not Include]
-
-    Includes --> Source[Independent C++ Source]
-    Includes --> Build[Build and CI Files]
-    Includes --> Docs[Original Documentation]
-    Includes --> Assets[Original Repository Assets]
-
-    Excludes --> Executable[Game Executable]
-    Excludes --> DLLs[Game DLLs]
-    Excludes --> Media[Textures, Models and Audio]
-    Excludes --> Levels[Maps and Level Data]
-    Excludes --> Cracks[Cracks and DRM Bypass]
-    Excludes --> Proprietary[Proprietary Source or SDK Files]
-
-    style Project fill:#EEF2FF,stroke:#A5B4FC,stroke-width:3px,color:#312E81
-    style Includes fill:#ECFDF5,stroke:#6EE7B7,stroke-width:2px,color:#065F46
-    style Excludes fill:#FDF2F8,stroke:#F9A8D4,stroke-width:2px,color:#831843
-```
-
-This repository contains independently written source code, project configuration, documentation, and original repository assets. It does not contain the original game executable, DLLs, levels, textures, models, audio, fonts, manuals, cracks, DRM circumvention material, or other proprietary game content.
-
-Project I.G.I. and related names, trademarks, and intellectual property belong to their respective rights holders. This project is unofficial and is not affiliated with, sponsored by, authorized by, or endorsed by those rights holders.
-
-Users must own a lawfully obtained copy of the game and are responsible for complying with applicable law, license terms, and platform rules.
-
-See:
-
-- [Legal Notice](LEGAL.md)
-- [MIT License](LICENSE)
-- [Security Policy](SECURITY.md)
-- [Third-Party Notices](THIRD_PARTY_NOTICES.md)
-
----
-
-## License
-
-The independently written source code in this repository is provided under the MIT License. The MIT License applies only to the original project code and documentation covered by the repository copyright notice.
-
-The project license does not grant rights to Project I.G.I., its executable, assets, trademarks, or any other third-party intellectual property.
-
----
-
-## Important Notes
-
-```mermaid
-%%{init: {'theme':'base', 'themeVariables': { 'primaryColor':'#FEF3C7','primaryTextColor':'#78350F','primaryBorderColor':'#FCD34D','lineColor':'#A5B4FC','secondaryColor':'#EEF2FF','tertiaryColor':'#FDF2F8'}}}%%
-flowchart LR
-    Offline[Offline Use Only] --> Lawful[Lawfully Obtained Copy]
-    Lawful --> Version[Version-Specific Compatibility]
-    Version --> Validate[Runtime Validation Required]
-    Validate --> NoAssets[No Proprietary Assets]
-    NoAssets --> Responsibility[User Responsibility]
-
-    style Offline fill:#ECFDF5,stroke:#6EE7B7,stroke-width:2px,color:#065F46
-    style Version fill:#FEF3C7,stroke:#FCD34D,stroke-width:2px,color:#78350F
-    style Responsibility fill:#FDF2F8,stroke:#F9A8D4,stroke-width:2px,color:#831843
-```
-
-- This project is restricted to authorized offline single-player experimentation.
-- The configured offsets are version-specific.
-- Runtime compatibility must be verified before publishing a compiled release.
-- Antivirus products may inspect unsigned memory-access utilities more aggressively.
-- A compiled release should be signed when a suitable code-signing process is available.
-- Publish SHA-256 checksums with every release.
-- Never bundle the original game or proprietary game content.
-- Keep all public screenshots and GIFs free of personal paths and private information.
+Improvements are welcome when they remain inside the authorized offline single-player scope.
 
 ---
 
 <div align="center">
 
-## IGI Offline Trainer
+## Built to Beat One Mission
 
-### Professional Offline Gameplay Experimentation Utility
+*That helicopter. That tank. That Dragunov guard. One childhood challenge that became a complete technical project.*
 
-*Minimal • Native • Validated • Private • Offline-Only*
+**Go back to Border Crossing and finish it your way.**
 
-*Built from one childhood mission that never stopped nagging at me.*
-
-<br>
-
-**Designed and Developed by TJM**
-
-*First Public Reverse-Engineering Learning Project*
+[Download the Latest Release](../../releases/latest) • [Build from Source](BUILD.md)
 
 <br>
 
-[Download the Latest Compiled Release](../../releases/latest)
+**Designed and developed by TJM**
 
 </div>
