@@ -4,7 +4,7 @@
 
 ### A tool to finally beat the mission that haunted my childhood.
 
-<img src="assets/images/border-crossing-hero.jpg" alt="Project I.G.I. Border Crossing mission" width="820">
+<img src="assets/images/border-crossing-hero.JPG" alt="Project I.G.I. Border Crossing mission" width="820">
 
 <br>
 
@@ -43,17 +43,17 @@ This trainer is for players who remember becoming stuck in difficult missions an
 <table>
 <tr>
 <td align="center" width="33.33%">
-<img src="assets/images/border-crossing-01.jpg" alt="Approaching Border Crossing" width="100%">
+<img src="assets/images/border-crossing-01.JPG" alt="Approaching Border Crossing" width="100%">
 <br><strong>The Approach</strong>
 <br><sub>Entering the exposed section carefully.</sub>
 </td>
 <td align="center" width="33.33%">
-<img src="assets/images/border-crossing-02.jpg" alt="The helicopter at Border Crossing" width="100%">
+<img src="assets/images/border-crossing-02.JPG" alt="The helicopter at Border Crossing" width="100%">
 <br><strong>That Helicopter</strong>
 <br><sub>Circling above and attacking again.</sub>
 </td>
 <td align="center" width="33.33%">
-<img src="assets/images/border-crossing-03.jpg" alt="Stuck at Border Crossing" width="100%">
+<img src="assets/images/border-crossing-03.JPG" alt="Stuck at Border Crossing" width="100%">
 <br><strong>Stuck Again</strong>
 <br><sub>Low health, low ammunition, another restart.</sub>
 </td>
