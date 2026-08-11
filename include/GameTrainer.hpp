@@ -1,38 +1,45 @@
 #pragma once
 #include "ProcessMemory.hpp"
 #include <atomic>
+#include <chrono>
 #include <cstdint>
 #include <mutex>
+#include <optional>
 #include <string>
 #include <thread>
-
 namespace igi {
-enum class LedState { Off, Active, Waiting, Error };
-struct FeatureView { bool enabled{}; LedState led{LedState::Off}; std::uint64_t writes{}; };
-struct UiSnapshot {
-    bool attached{}; DWORD pid{}; float healthPercent{};
-    FeatureView invincible, magazine, inventory;
-    std::wstring status{L"Waiting for igi.exe"};
+enum class LedState{Off,Waiting,Active,Error};
+struct FeatureView{bool enabled{};LedState led{LedState::Off};std::uint64_t writes{};};
+struct UiSnapshot{
+    bool attached{};DWORD pid{};std::wstring status{L"Waiting for igi.exe"};float healthPercent{};
+    FeatureView invincible{},magazine{},inventory{},movement{};
+    int movementLevel{1};float rootScale{};bool fallProtection{};
 };
-
-class GameTrainer final {
+class GameTrainer{
 public:
-    GameTrainer(); ~GameTrainer();
-    GameTrainer(const GameTrainer&) = delete;
-    GameTrainer& operator=(const GameTrainer&) = delete;
-    void start(); void stop();
-    void toggleInvincible(); void toggleMagazine(); void toggleInventory();
-    [[nodiscard]] UiSnapshot snapshot() const;
+    GameTrainer();~GameTrainer();
+    void start();void stop();
+    void toggleInvincible();void toggleMagazine();void toggleInventory();void cycleMovement();void disableAll();
+    UiSnapshot snapshot() const;
 private:
-    void run();
-    bool validPointer(std::uint32_t p) const;
+    bool validPointer(std::uint32_t) const;
     std::optional<std::uintptr_t> resolvePlayer();
     std::optional<std::uintptr_t> resolveMagazine();
-    void tick(); void updateHotkeys();
+    void updateHotkeys();void tick();void run();void restoreRootScale();
     mutable std::mutex mutex_;
     ProcessMemory memory_;
     UiSnapshot view_;
-    std::atomic_bool running_{false};
+    std::atomic_bool running_{};
     std::jthread worker_;
+    std::uintptr_t lastPlayer_{};
+    bool previousGroundedKnown_{};
+    bool previousGrounded_{};
+    bool modifiedThisJump_{};
+    bool airBoostActive_{};
+    float airDirectionX_{},airDirectionY_{},airTargetSpeed_{};
+    std::chrono::steady_clock::time_point airBoostEnd_{};
+    bool originalRootKnown_{};
+    float originalRootScale_{};
+    int movementLevel_{1};
 };
 }

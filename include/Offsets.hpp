@@ -1,6 +1,6 @@
 #pragma once
+#include <cstddef>
 #include <cstdint>
-
 namespace igi::offsets {
 inline constexpr wchar_t processName[] = L"igi.exe";
 inline constexpr std::uintptr_t rootStatic = 0x16E210;
@@ -21,5 +21,19 @@ inline constexpr std::uintptr_t magazineFinal = 0x144;
 inline constexpr std::int32_t magazineTarget = 99;
 inline constexpr std::int32_t magazineMin = 0;
 inline constexpr std::int32_t magazineMax = 500;
-inline constexpr auto pollIntervalMs = 25u;
+inline constexpr std::uintptr_t stateFlags = 0x2F4;
+inline constexpr std::uintptr_t speedX = 0x664;
+inline constexpr std::uintptr_t speedY = 0x668;
+inline constexpr std::uintptr_t speedZ = 0x66C;
+inline constexpr std::uint32_t groundFlag = 0x04;
+inline constexpr std::uintptr_t rootMotionScale = 0x16E1E8;
+inline constexpr float normalJumpImpulse = 1024.0f;
+inline constexpr float minTakeoffSpeed = 700.0f;
+inline constexpr float maxTakeoffSpeed = 1100.0f;
+inline constexpr float minHorizontalSpeed = 5.0f;
+inline constexpr float maxHorizontalSpeed = 6000.0f;
+inline constexpr float safeDownwardSpeed = -450.0f;
+inline constexpr float fallTrigger = -400.0f;
+inline constexpr int airBoostMs = 300;
+inline constexpr int pollIntervalMs = 1;
 }
