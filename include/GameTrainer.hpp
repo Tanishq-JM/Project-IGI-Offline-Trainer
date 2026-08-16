@@ -1,74 +1,52 @@
 #pragma once
-#include "ProcessMemory.hpp"
-#include <atomic>
-#include <chrono>
+#include <cstddef>
 #include <cstdint>
-#include <mutex>
-#include <optional>
-#include <string>
-#include <thread>
 
-namespace igi {
-enum class LedState { Off, Waiting, Active, Error };
+namespace igi::offsets {
+inline constexpr wchar_t processName[] = L"igi.exe";
 
-struct FeatureView {
-    bool enabled{};
-    LedState led{LedState::Off};
-    std::uint64_t writes{};
-};
+inline constexpr std::uintptr_t rootStatic = 0x16E210;
+inline constexpr std::uintptr_t playerStep1 = 0x08;
+inline constexpr std::uintptr_t playerStep2 = 0x7CC;
+inline constexpr std::uintptr_t playerStep3 = 0x14;
 
-struct UiSnapshot {
-    bool attached{};
-    DWORD pid{};
-    std::wstring status{L"Waiting for igi.exe"};
-    float healthPercent{};
-    FeatureView invincible{}, magazine{}, inventory{}, movement{};
-    int movementLevel{1};
-    float rootScale{};
-    bool fallProtection{};
-};
+inline constexpr std::uintptr_t accumulatedDamage = 0x254;
+inline constexpr std::uintptr_t damageCapacity = 0x258;
 
-class GameTrainer {
-public:
-    GameTrainer();
-    ~GameTrainer();
-    void start();
-    void stop();
-    void toggleInvincible();
-    void toggleMagazine();
-    void toggleInventory();
-    void cycleMovement();
-    void disableAll();
-    UiSnapshot snapshot() const;
+inline constexpr std::uintptr_t inventoryTable = 0x340;
+inline constexpr std::uintptr_t inventoryFirst = 0x344;
+inline constexpr std::uintptr_t inventoryRecordSize = 0x0C;
+inline constexpr std::int32_t maxSafeRecords = 64;
+inline constexpr std::int32_t unclampedTarget = 100;
 
-private:
-    bool validPointer(std::uint32_t value) const;
-    std::optional<std::uintptr_t> resolvePlayer();
-    std::optional<std::uintptr_t> resolveMagazine();
-    void updateHotkeys();
-    void tick();
-    void run();
-    void restoreRootScale();
+inline constexpr std::uintptr_t magazineStatic = 0x671890;
+inline constexpr std::uintptr_t magazineStep1 = 0x00;
+inline constexpr std::uintptr_t magazineStep2 = 0x4C4;
+inline constexpr std::uintptr_t magazineFinal = 0x144;
+inline constexpr std::int32_t magazineTarget = 99;
+inline constexpr std::int32_t magazineMin = 0;
+inline constexpr std::int32_t magazineMax = 500;
 
-    mutable std::mutex mutex_;
-    ProcessMemory memory_;
-    UiSnapshot view_;
-    std::atomic_bool running_{};
-    std::jthread worker_;
-    std::uintptr_t lastPlayer_{};
-    bool previousGroundedKnown_{};
-    bool previousGrounded_{};
-    bool modifiedThisJump_{};
-    bool airBoostActive_{};
-    bool fallProtectionActive_{};
-    bool diveActive_{};
-    float airDirectionX_{};
-    float airDirectionY_{};
-    float airTargetSpeed_{};
-    std::chrono::steady_clock::time_point airBoostEnd_{};
-    std::chrono::steady_clock::time_point fallProtectionStart_{};
-    bool originalRootKnown_{};
-    float originalRootScale_{};
-    int movementLevel_{1};
-};
+inline constexpr std::uintptr_t stateFlags = 0x2F4;
+inline constexpr std::uintptr_t speedX = 0x664;
+inline constexpr std::uintptr_t speedY = 0x668;
+inline constexpr std::uintptr_t speedZ = 0x66C;
+inline constexpr std::uint32_t groundFlag = 0x04;
+inline constexpr std::uintptr_t rootMotionScale = 0x16E1E8;
+
+inline constexpr float normalJumpImpulse = 1024.0f;
+inline constexpr float minTakeoffSpeed = 700.0f;
+inline constexpr float maxTakeoffSpeed = 1100.0f;
+inline constexpr float minHorizontalSpeed = 5.0f;
+inline constexpr float minAirBoostSpeed = 900.0f;
+inline constexpr float maxHorizontalSpeed = 6000.0f;
+inline constexpr int airBoostMs = 300;
+
+inline constexpr float fallTrigger = -400.0f;
+inline constexpr float safeDownwardSpeed = -450.0f;
+inline constexpr float softLandingTargetSpeed = -80.0f;
+inline constexpr int softLandingRampMs = 600;
+inline constexpr float diveDownSpeed = -1600.0f;
+
+inline constexpr int pollIntervalMs = 1;
 }
